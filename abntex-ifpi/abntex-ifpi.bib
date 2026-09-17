@@ -1,0 +1,43 @@
+%% =====================================================================
+%% Opções de estilo bibliográfico do modelo IFPI.
+%%
+%% NÃO cadastre suas obras aqui: elas vão em bibliografia.bib.
+%%
+%% Este arquivo existe por um detalhe técnico. O pacote abntex2cite
+%% repassa algumas opções ao BibTeX na forma de "entradas de opções",
+%% que precisam estar em um arquivo .bib. O abnTeX2 distribui um arquivo
+%% assim (abntex2-options.bib), mas ele foi escrito antes da revisão de
+%% 2023 da NBR 10520 e não traz um perfil para ela. A entrada abaixo
+%% acrescenta esse perfil.
+%%
+%% O que ela faz:
+%%   abnt-cite-style = "(Author, YEAR)"
+%%       A chamada da citação sai em maiúsculas e minúsculas --
+%%       "(Silva, 2020)" e "Silva (2020)" -- como determina a
+%%       NBR 10520:2023, adotada pelo Manual de Normalização do IFPI
+%%       de 2024 (seção 10). A ENTRADA DA REFERÊNCIA continua em caixa
+%%       alta: "SILVA, João. Título..."
+%%   abnt-and-type = "e"
+%%       Liga dois autores com "e", como nos exemplos do manual:
+%%       "Oliveira e Leonardos (1943, p. 146)".
+%%   abnt-last-names = "bibtex"
+%%       O sobrenome é tudo o que vem antes da vírgula no campo author.
+%%       É o que a seção 11.4 do manual pede para nomes compostos
+%%       ("CASTELO BRANCO, Camilo"), com grau de parentesco ("SILVA NETO,
+%%       Manuel") e com prefixo ("D'AMBROSIO, Ubiratan"). O padrão do
+%%       abnTeX2 entra só pela última palavra e produz "NETO, M. S."
+%%       nesses casos.
+%%
+%% Esta opção precisa estar AQUI, e não na lista de opções do pacote:
+%% o BibTeX calcula as chamadas de citação antes de ler as opções soltas,
+%% e só as opções que acompanham abnt-cite-style são lidas a tempo.
+%%
+%% A opção é acionada em configuracoes/citacoes.tex, pela linha
+%% "abnt-nbr10520=2023" passada ao pacote abntex2cite.
+%% =====================================================================
+
+@ABNT-options{abnt-nbr10520=2023,
+  abnt-cite-style   = "(Author, YEAR)",
+  abnt-and-type     = "e",
+  abnt-last-names   = "bibtex",
+  key               = "aaaa"}

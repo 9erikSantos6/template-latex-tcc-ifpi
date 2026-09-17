@@ -21,9 +21,11 @@ A \autoref{tab:identificador} demonstra uma tabela com quatro colunas.
 
 \begin{table}[htb]
   \centering
-  \ABNTEXfontereduzida
+  % O título da tabela fica em tamanho 12 (manual IFPI 2024, seção 3.1, c).
   \caption{Exemplo de organização de informações}
   \label{tab:identificador}
+  % Só o miolo da tabela usa o corpo reduzido; \fonte já sai em tamanho 10.
+  {\ABNTEXfontereduzida
   \begin{tabularx}{\linewidth}{lllX}
     \toprule
     \textbf{Item} & \textbf{Categoria} & \textbf{Etapa} & \textbf{Descrição} \\
@@ -31,7 +33,7 @@ A \autoref{tab:identificador} demonstra uma tabela com quatro colunas.
     1 & Exemplo & Inicial & Substitua este conteúdo pelos dados do trabalho.
     A última coluna ajusta sua largura automaticamente. \\
     \bottomrule
-  \end{tabularx}
+  \end{tabularx}}
   \fonte{Elaboração própria; dados fictícios para demonstração.}
 \end{table}
 

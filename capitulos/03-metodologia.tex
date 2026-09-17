@@ -18,9 +18,9 @@ ajustada à página. O conteúdo é um exemplo herdado do modelo original.
 
 \begin{table}[htb]
   \centering
-  \ABNTEXfontereduzida
   \caption{Níveis de investigação}
   \label{tab-nivinv}
+  {\ABNTEXfontereduzida
   \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X
     >{\raggedright\arraybackslash}X
     >{\raggedright\arraybackslash}X
@@ -33,9 +33,34 @@ ajustada à página. O conteúdo é um exemplo herdado do modelo original.
       & Ciência & Teorias e modelos \\
     Nível inferior & Modelos, métodos e problemas & Prática & Solução de problemas \\
     \bottomrule
-  \end{tabularx}
+  \end{tabularx}}
   \fonte{\citeonline{van86}.}
 \end{table}
+
+\subsection{Exemplo de quadro}
+
+Tabela e quadro não são a mesma coisa. A tabela apresenta dado numérico
+como informação central e tem as laterais abertas; o quadro é fechado em
+todos os lados e apresenta dados qualitativos. O
+Quadro~\ref{quad:instrumentos} demonstra o ambiente próprio para quadros,
+que tem numeração e lista independentes das tabelas.
+
+\begin{quadro}[htb]
+  \centering
+  \caption{Instrumentos de coleta por etapa: exemplo fictício}
+  \label{quad:instrumentos}
+  {\ABNTEXfontereduzida
+  \begin{tabularx}{\linewidth}{|l|X|}
+    \hline
+    \textbf{Etapa} & \textbf{Instrumento} \\
+    \hline
+    Diagnóstico & Questionário aplicado aos participantes. \\
+    \hline
+    Avaliação & Roteiro de entrevista semiestruturada. \\
+    \hline
+  \end{tabularx}}
+  \fonte{Elaboração própria.}
+\end{quadro}
 
 \subsection{Exemplo de tabela com números}
 

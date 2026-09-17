@@ -28,10 +28,12 @@
 % 2. IDENTIFICAÇÃO DO TRABALHO  (obrigatório)
 % ---------------------------------------------------------------------
 
-% Título do artigo. Se houver subtítulo, separe-o por dois-pontos.
+% Título do artigo. Se houver subtítulo, separe-o por dois-pontos
+% (manual IFPI 2024, seção 5.1, alínea d).
 \titulo{Título do trabalho: subtítulo (se houver)}
 
-% Seu nome completo, como deve aparecer na capa.
+% Seu nome completo, como deve aparecer na capa. O TCC de graduação do
+% IFPI é individual (Res. Normativa nº 180/2023): um único autor.
 \autor{Nome do aluno}
 
 % Cidade e estado que aparecem no rodapé da capa e da folha de rosto.
@@ -114,12 +116,16 @@ Instituto Federal de Educação, Ciência e Tecnologia do Piauí, \meucampus.}
 % ---------------------------------------------------------------------
 % 7. DATA DE APRESENTAÇÃO  (obrigatório)
 %
+% No artigo, a data de aprovação vem logo abaixo das palavras-chave do
+% resumo em língua estrangeira, no formato DIA/MÊS/ANO (manual IFPI 2024,
+% seção 7.4).
+%
 % CUIDADO: esta data já aparece no PDF, no rodapé da página do abstract,
 % mesmo com a folha de aprovação desativada. Se você não trocar, sai
-% "Data de aprovação: Dia de mês de ano" no trabalho entregue.
-% Exemplo de preenchimento: \dataapresentacao{20 de novembro de 2026}
+% "Data de aprovação: XX/XX/XXXX" no trabalho entregue.
+% Exemplo de preenchimento: \dataapresentacao{20/11/2026}
 % ---------------------------------------------------------------------
-\dataapresentacao{Dia de mês de ano}
+\dataapresentacao{XX/XX/XXXX}
 
 
 % ---------------------------------------------------------------------
@@ -144,9 +150,14 @@ Contato: \url{orientador@example.com}.}
 % ---------------------------------------------------------------------
 % 9. PALAVRAS-CHAVE  (obrigatório)
 %
-% Texto simples, sem comandos de formatação, separado por ponto e vírgula
-% e terminado em ponto final. \keywords é a versão em inglês, usada no
-% abstract; traduza as mesmas palavras, não escolha outras.
+% Regras do manual IFPI 2024, seção 4:
+%   - de 3 a 5 descritores;
+%   - separados entre si por PONTO E VÍRGULA e terminados em PONTO FINAL;
+%   - iniciais minúsculas, exceto substantivos próprios e nomes
+%     científicos.
+%
+% Texto simples, sem comandos de formatação. \keywords é a versão em
+% inglês, usada no abstract; traduza as mesmas palavras, não escolha outras.
 % ---------------------------------------------------------------------
 \newcommand{\palavraschave}{modelo; artigo; pesquisa.}
 \newcommand{\keywords}{template; article; research.}

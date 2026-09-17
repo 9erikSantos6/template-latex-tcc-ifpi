@@ -1,7 +1,11 @@
 % CORPO DO TRABALHO: os arquivos aparecem no PDF nesta ordem.
 % Embora a pasta se chame capitulos, o modo article usa \section nos títulos.
 % Para acrescentar uma seção, crie seu .tex e inclua outra linha \input{...}.
-\pagestyle{simple}
+
+% Paginação em algarismos arábicos no canto superior direito, tamanho 10,
+% começando na primeira folha da parte textual (manual IFPI 2024, seção 3.5).
+% O estilo abntifpi é definido em abntex-ifpi/abntex-ifpi.sty.
+\pagestyle{abntifpi}
 
 \input{capitulos/01-introducao}
 \input{capitulos/02-fundamentacao-teorica}

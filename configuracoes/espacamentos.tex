@@ -1,12 +1,32 @@
 % =====================================================================
-% ESPAÇAMENTOS  (valores preservados do modelo original)
+% ESPAÇAMENTOS
+% Manual de Normalização do IFPI (2024), seções 3.3, 3.4 e 7.4
 %
-% \parindent = recuo da primeira linha de cada parágrafo.
-% \parskip   = espaço extra entre parágrafos. Em 0cm, os parágrafos são
-%              separados apenas pelo recuo, como pede o padrão ABNT.
+% \parindent = recuo da primeira linha de cada parágrafo. A norma pede
+%              1,25 cm a partir da margem esquerda (seção 3.4, alínea c).
+% \parskip   = espaço extra entre parágrafos. A norma pede 0 pt: os
+%              parágrafos são separados apenas pelo recuo.
 %
 % Não ajuste espaçamento parágrafo a parágrafo no texto: mude aqui e o
 % documento inteiro acompanha.
 % =====================================================================
-\setlength{\parindent}{1.5cm}
-\setlength{\parskip}{0cm}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ---------------------------------------------------------------------
+% ESPAÇAMENTO ENTRE LINHAS
+%
+% A regra geral (seção 3.3, alínea a) é 1,5 entre linhas. MAS o artigo
+% científico é exceção: "fonte Arial ou Times New Roman, tamanho 12,
+% espaçamento simples em todo o artigo" (seções 3.6.1 Nota 02 e 7.4).
+%
+% Este modelo é um ARTIGO, então o padrão aqui é o espaçamento simples.
+% Se você adaptar o modelo para monografia, dissertação ou tese, troque
+% \SingleSpacing por \OnehalfSpacing na linha abaixo.
+%
+% Em qualquer das duas modalidades continuam em espaço simples, por
+% conta própria, as citações longas, as notas de rodapé, as referências,
+% as legendas e a natureza do trabalho (seção 3.3, alínea b) -- isso o
+% abnTeX2 já faz sozinho.
+% ---------------------------------------------------------------------
+\SingleSpacing

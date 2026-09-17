@@ -2,6 +2,11 @@
 
 Leia na ordem na primeira vez. Depois, use como consulta.
 
+A formatação deste modelo segue o Manual de Normalização de Trabalhos
+Acadêmicos do IFPI de 2024. Você não precisa conhecer a norma para escrever:
+o modelo já aplica as regras. Quando este guia citar uma "seção" do manual,
+o texto correspondente está em `docs/normas-abnt/`.
+
 ## 1. Entenda o projeto
 
 No LaTeX você **não** formata o texto clicando em botões. Você escreve o texto
@@ -44,8 +49,8 @@ pequena. Assim, quando algo quebrar, você sabe exatamente o que causou.
 Compile o modelo **como ele veio**, antes de mudar qualquer coisa. Você deve
 obter um PDF de poucas páginas com: capa, folha de rosto, página do resumo,
 o abstract, os capítulos de exemplo, as referências e um apêndice de exemplo.
-Não há sumário — ele vem desativado na configuração de artigo (a Seção 8
-explica como ativar).
+Não há sumário — ele vem desativado na configuração de artigo, porque a
+estrutura do artigo não o exige (a Seção 9 explica como ativar).
 
 | Onde você está | O que fazer |
 | --- | --- |
@@ -90,13 +95,21 @@ LaTeX cuida do espaçamento, e forçar quebras à mão estraga a justificação.
 
 | Recurso | Exemplo |
 | --- | --- |
-| Seção principal | `\section{Metodologia}` |
-| Subseção | `\subsection{Coleta de dados}` |
-| Divisão da subseção | `\subsubsection{Instrumentos}` |
+| Seção primária | `\section{Metodologia}` |
+| Seção secundária | `\subsection{Coleta de dados}` |
+| Seção terciária | `\subsubsection{Instrumentos}` |
+| Seção quaternária | `\subsubsubsection{Detalhe}` |
 | Negrito | `\textbf{palavra}` |
 | Ênfase (itálico) | `\emph{palavra}` |
 | Código no meio da frase | `\codigo{git commit}` |
 | Nota de rodapé | `\footnote{Explicação complementar.}` |
+| Equação numerada | `\begin{equation} ... \end{equation}` |
+
+A norma limita a numeração progressiva até a **seção quinária** (cinco níveis)
+e exige que toda seção tenha texto próprio — não deixe um título seguido
+imediatamente de outro título. Cada nível recebe um destaque tipográfico
+diferente, e o modelo já cuida disso: primária em maiúsculas e negrito,
+secundária em maiúsculas, terciária em negrito, quaternária em itálico.
 
 Não digite o número dos títulos: ele é automático. Embora os arquivos fiquem
 em `capitulos/`, o modo artigo usa `\section` para os títulos principais;
@@ -113,7 +126,7 @@ quando você quer que apareçam no texto:
 
 O caractere `%` **sem** barra inicia um comentário: tudo dali até o fim da
 linha é ignorado e não aparece no PDF. É assim que o modelo desativa linhas
-(veja a Seção 8) e é assim que você escreve lembretes para si mesmo.
+(veja a Seção 9) e é assim que você escreve lembretes para si mesmo.
 
 ## 5. Acrescente ou retire uma seção
 
@@ -138,11 +151,37 @@ Cada obra em `bibliografia.bib` tem uma **chave** única, escrita logo depois de
 `@article{`, `@book{` ou outro tipo de entrada. Uma chave que já existe no
 modelo é `SilvaNeto2019Credibility`.
 
-- `\cite{SilvaNeto2019Credibility}` → citação entre parênteses, no fim da frase.
-- `\citeonline{SilvaNeto2019Credibility}` → autores integrados à frase.
+- `\cite{SilvaNeto2019Credibility}` → citação entre parênteses, no fim da frase:
+  `(Silva Neto; Gomes; Soares, 2019)`.
+- `\citeonline{SilvaNeto2019Credibility}` → autores integrados à frase:
+  `Silva Neto, Gomes e Soares (2019)`.
+- `\apud{obra-citada}{obra-consultada}` → citação de citação. Só a obra
+  **consultada** entra nas referências, e a norma recomenda usar o recurso
+  apenas quando não houver acesso ao original.
 - Para indicar a página, acrescente `[p.~24]` entre o comando e as chaves:
   `\cite[p.~24]{SilvaNeto2019Credibility}`. O `~` é um espaço que não deixa a
   linha quebrar entre "p." e o número.
+
+Desde a **NBR 10520:2023** a chamada da citação sai em maiúsculas e minúsculas
+— `(Silva, 2020)`, e não mais `(SILVA, 2020)`. A entrada da referência, no fim
+do trabalho, continua em caixa alta: `SILVA, João. Título...`. Quem faz isso é
+`configuracoes/citacoes.tex`; você nunca escreve o nome do autor à mão.
+
+Escolha **um** sistema de chamada — autor-data ou numérico — e use-o no
+trabalho inteiro. O modelo vem no autor-data. O sistema numérico não pode ser
+usado quando houver notas de rodapé.
+
+Três tipos de citação e como escrevê-los:
+
+| Tipo | Como fica |
+| --- | --- |
+| Direta de até 3 linhas | entre aspas duplas, no corpo do texto, com a página |
+| Direta com mais de 3 linhas | ambiente `citacao`: sem aspas, recuo de 4 cm, tamanho 10, espaço simples |
+| Indireta (paráfrase) | sem aspas, sem mudar a fonte; página opcional. É a forma recomendada |
+
+Supressões e acréscimos vão entre colchetes: `[...]` para o trecho omitido,
+`[comentário]` para a interpolação. Para destacar algo que você grifou,
+acrescente "grifo nosso" ao fim da chamada.
 
 A lista de referências no fim do PDF é montada sozinha, **só com as obras que
 você citou**. Uma entrada cadastrada e nunca citada não aparece. Nunca digite a
@@ -151,11 +190,15 @@ lista à mão: `pos-textual/referencias.tex` a imprime automaticamente.
 Para cadastrar outra obra, copie um dos modelos comentados no fim de
 `bibliografia.bib` (as entradas com chave `exemplo-...`), cole no fim do
 arquivo, troque a chave e preencha os campos com os dados conferidos da
-publicação. Duas regras salvam a maioria dos casos:
+publicação. Três regras salvam a maioria dos casos:
 
 - Separe autores por `and`, nunca por `e` nem por vírgula entre as pessoas:
   `author = {Sobrenome, Nome and Outro Sobrenome, Outro Nome}`.
   A vírgula dentro de um nome é o que separa sobrenome de nome.
+- **Tudo o que vem antes da vírgula é sobrenome.** Isso vale também para
+  sobrenome composto, com prefixo ou com grau de parentesco:
+  `{Silva Neto, Manuel}` → `SILVA NETO, Manuel`;
+  `{Castelo Branco, Camilo}` → `CASTELO BRANCO, Camilo`.
 - Não use duas entradas com a mesma chave.
 
 As entradas que vêm no modelo são exemplos. Não basta trocar a chave: autores,
@@ -166,7 +209,34 @@ Uma citação direta longa vai no ambiente `citacao` (há um exemplo em
 e a indicação da fonte. O texto que está lá é uma instrução de preenchimento,
 não uma citação publicável: substitua-o ou remova-o.
 
-## 7. Insira imagens e tabelas
+`abntex-ifpi/abntex-ifpi.bib` também é lido pelo BibTeX, mas **não cadastre
+obras nele**: ele só carrega o perfil de citação da NBR 10520:2023.
+
+## 7. Use listas de alíneas
+
+Quando um assunto de uma seção se subdivide sem título próprio, a norma pede
+**alíneas**, não marcadores livres. O modelo tem um exemplo pronto em
+`capitulos/02-fundamentacao-teorica.tex`:
+
+```latex
+O texto que antecede as alíneas termina em dois pontos:
+
+\begin{alineas}
+  \item primeira alínea, em minúscula e terminada em ponto e vírgula;
+  \item segunda alínea, que se desdobra assim:
+  \begin{subalineas}
+    \item subalínea iniciada por travessão;
+  \end{subalineas}
+  \item última alínea, terminada em ponto final.
+\end{alineas}
+```
+
+As letras `a)`, `b)`, `c)` e os travessões são automáticos. As regras que ficam
+por sua conta: o texto anterior termina em dois pontos, cada alínea começa por
+letra minúscula e termina em ponto e vírgula, e a última termina em ponto
+final. Se uma alínea tiver subalíneas, ela termina em dois pontos.
+
+## 8. Insira imagens, tabelas e quadros
 
 Coloque as imagens (PNG, JPG ou PDF) em `imagens/`. Prefira nomes simples, sem
 espaços e sem acentos, como `resultado-experimento.png`. Maiúsculas e
@@ -199,7 +269,28 @@ Dentro de uma tabela, `&` separa colunas e `\\` termina uma linha. A coluna `X`
 do ambiente `tabularx` estica para ocupar a largura que sobra — use-a na coluna
 de texto mais longo. Para escrever um `&` como conteúdo de uma célula, use `\&`.
 
-## 8. Ative as partes opcionais
+**Tabela ou quadro?** A norma trata os dois como coisas diferentes:
+
+| | Tabela | Quadro |
+| --- | --- | --- |
+| Conteúdo | dado numérico como informação central | dados qualitativos |
+| Laterais | abertas (sem barras verticais) | fechado em todos os lados |
+| Ambiente | `\begin{table}` | `\begin{quadro}` |
+| Lista | lista de tabelas | lista de quadros |
+
+Há um quadro de exemplo em `capitulos/03-metodologia.tex`. A numeração e a
+lista dos quadros são independentes das tabelas.
+
+Três regras valem para ilustrações, tabelas e quadros:
+
+1. O título fica **acima**, centralizado, em tamanho 12, com travessão entre o
+   número e o texto — tudo automático a partir de `\caption{...}`.
+2. A **fonte é obrigatória** logo abaixo, em tamanho 10, mesmo quando o
+   material é de sua autoria: `\fonte{Elaboração própria.}`.
+3. O elemento precisa ser **citado no texto** e inserido o mais perto possível
+   do trecho a que se refere.
+
+## 9. Ative as partes opcionais
 
 Abra `estrutura/pre-textual.tex` ou `estrutura/pos-textual.tex`. As linhas que
 começam com `%` estão desativadas. Para incluir agradecimentos, por exemplo,
@@ -208,7 +299,9 @@ arquivo correspondente em `pre-textual/opcionais/`.
 
 - **Sumário:** ative **juntas** as quatro linhas indicadas no fim de
   `estrutura/pre-textual.tex`. Ele é construído a partir dos títulos das seções.
-- **Listas de figuras e de tabelas:** recebem as legendas automaticamente.
+- **Listas de figuras, de tabelas e de quadros:** recebem as legendas
+  automaticamente. Com mais de cinco itens de um mesmo tipo, a norma recomenda
+  uma lista separada por tipo.
 - **Siglas e símbolos:** listas escritas à mão; mantenha apenas os itens que
   você realmente usa e apague os cinco exemplos que vêm no arquivo.
 - **Dedicatória, agradecimentos, epígrafe e errata:** textos livres, cada um em
@@ -228,6 +321,10 @@ arquivo correspondente em `pre-textual/opcionais/`.
 - **Diagramas UML:** o pacote vem desativado em `estrutura/preambulo.tex`
   porque é grande e poucos trabalhos o usam. Retire o `%` da linha
   `\usepackage{abntex-ifpi/tikz-uml}` para usá-lo.
+- **"Citado na página X" nas referências:** apoio à revisão, útil para achar
+  obras cadastradas e pouco citadas. Vem desativado porque esse texto não faz
+  parte da referência. Ative o pacote `backref` em `estrutura/preambulo.tex`
+  enquanto escreve e **desative antes da entrega**.
 
 Para um **índice remissivo** (lista de termos com as páginas em que aparecem,
 diferente do sumário, que lista títulos): ative `\makeindex` no fim de
@@ -236,7 +333,7 @@ diferente do sumário, que lista títulos): ative `\makeindex` no fim de
 o Overleaf executam o MakeIndex sozinhos; em outros editores, confira no log se
 a etapa rodou antes de concluir que o índice não funciona.
 
-## 9. Entenda a compilação
+## 10. Entenda a compilação
 
 Compilar não é um passo só. O LaTeX lê o documento inteiro, anota numerações e
 citações em arquivos auxiliares e **precisa passar de novo** para usar o que
@@ -257,7 +354,7 @@ apagados e recriados. O `.gitignore` do projeto já os mantém fora do controle
 de versão. Para limpar a pasta manualmente: `latexmk -c` remove os auxiliares e
 preserva o PDF; `latexmk -C` remove também o PDF.
 
-## 10. Resolva problemas comuns
+## 11. Resolva problemas comuns
 
 **Comece sempre pelo primeiro erro do log.** As mensagens seguintes costumam
 ser consequência dele, e corrigir a primeira geralmente resolve várias.
@@ -280,7 +377,7 @@ ser consequência dele, e corrigir a primeira geralmente resolve várias.
 
 Corrigiu? Compile e confira o PDF antes de seguir.
 
-## 11. Faça a revisão final
+## 12. Faça a revisão final
 
 Use a lista "Antes de entregar" do `README.md` e, além dela:
 
@@ -291,7 +388,12 @@ Use a lista "Antes de entregar" do `README.md` e, além dela:
   antiga.
 - Leia as páginas de referências e de apêndices, que são fáceis de esquecer.
 
-A configuração preserva fonte Times, corpo de 12 pontos e recuo de parágrafo de
-1,5 cm do modelo recebido; o estilo de página do texto exibe a numeração sem
-títulos no cabeçalho. Esses valores **não** substituem a conferência das
-exigências do seu curso, da biblioteca ou da orientação.
+A configuração aplica o que o manual de 2024 pede para o artigo: fonte Times
+(Arial também é aceita), corpo de 12 pontos, texto justificado, entrelinhas
+simples, recuo de parágrafo de 1,25 cm sem espaço extra entre parágrafos,
+margens de 3 cm à esquerda e no topo e 2 cm à direita e embaixo, e paginação em
+tamanho 10 no canto superior direito, a 2 cm das bordas. O mapa completo
+"regra → arquivo" está em `docs/normas-abnt/conformidade.md`.
+
+Esses valores **não** substituem a conferência das exigências do seu curso, da
+biblioteca ou da orientação.

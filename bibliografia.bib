@@ -19,6 +19,14 @@
 %%     author = {Silva, Ana and Souza, Bruno and Lima, Carla}
 %%   - A vírgula dentro de um nome separa sobrenome de nome:
 %%     {Silva, Ana Maria} = sobrenome Silva, nome Ana Maria.
+%%   - O SOBRENOME é tudo o que vem antes da vírgula; o prenome, depois.
+%%     Isso vale também para sobrenome composto, com prefixo ou com grau
+%%     de parentesco (manual IFPI 2024, seção 11.4):
+%%     {Silva Neto, Manuel}        -> SILVA NETO, Manuel
+%%     {Castelo Branco, Camilo}    -> CASTELO BRANCO, Camilo
+%%     {D'Ambrosio, Ubiratan}      -> D'AMBROSIO, Ubiratan
+%%     Autores hispânicos entram pelos DOIS últimos sobrenomes:
+%%     {Cervantes Saavedra, Miguel}
 %%   - Acentos podem ser digitados normalmente (o arquivo é UTF-8). A forma
 %%     antiga, {\c c} e {\~a}, também funciona.
 %%   - Palavras que precisam manter a maiúscula ficam entre chaves:
@@ -176,5 +184,42 @@
   title   = {Título da página},
   year    = {2025},
   url     = {https://exemplo.org/pagina},
+  urlaccessdate = {16 set. 2026}
+}
+
+%% Documento jurídico. A entrada é a jurisdição em maiúsculas; a epígrafe e
+%% a ementa são transcritas como foram publicadas (manual, seção 11.6).
+@misc{exemplo-lei,
+  author = {{BRASIL}},
+  title  = {Lei n. 9.610, de 19 de fevereiro de 1998},
+  subtitle = {altera, atualiza e consolida a legisla{\c c}{\~a}o sobre
+              direitos autorais e d{\'a} outras provid{\^e}ncias},
+  address   = {Bras{\'\i}lia, DF},
+  publisher = {Presid{\^e}ncia da Rep{\'u}blica},
+  year   = {1998}
+}
+
+%% Trabalho publicado em anais: o nome do evento vai por extenso e em
+%% maiúsculas, com o número de realização e o ano (manual, seção 11.4).
+@inproceedings{exemplo-evento,
+  author    = {Sobrenome, Nome},
+  title     = {Título do trabalho apresentado},
+  booktitle = {Anais [...]},
+  organization = {CONGRESSO BRASILEIRO DE ENGENHARIA DE PRODU{\c C}{\~A}O, 15.},
+  address   = {S{\~a}o Carlos, SP},
+  publisher = {ABEPRO},
+  pages     = {1-10},
+  year      = {1995}
+}
+
+%% Publicação em rede social: nome da rede e perfil separados por dois
+%% pontos, com data da postagem (manual, seção 11.4).
+@misc{exemplo-rede-social,
+  author = {{PERFIL OU ORGANIZA{\c C}{\~A}O}},
+  title  = {Primeiras palavras da postagem [...]},
+  address = {Brasil},
+  note   = {Instagram: @perfil},
+  year   = {2025},
+  url    = {https://exemplo.org/postagem},
   urlaccessdate = {16 set. 2026}
 }

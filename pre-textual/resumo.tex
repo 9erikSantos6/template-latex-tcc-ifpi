@@ -1,13 +1,29 @@
 % RESUMO: substitua o parágrafo de orientação pelo resumo da sua pesquisa.
 % Título, nomes, notas e palavras-chave vêm de configuracoes/metadados.tex.
+%
+% Regras do manual IFPI 2024 (seções 4 e 7.4) para o resumo do artigo:
+%   - parágrafo ÚNICO, sem recuo na primeira linha, justificado;
+%   - frases concisas e afirmativas, verbo na voz ativa e na terceira
+%     pessoa do singular; a primeira frase expõe o tema e a categoria
+%     do trabalho;
+%   - tipo informativo: finalidade, metodologia, resultados e conclusões;
+%   - de 150 a 250 palavras no artigo;
+%   - sem símbolos, fórmulas, equações ou enumeração de tópicos;
+%   - espaçamento simples e tamanho 12.
 \begin{center}
   \textbf{\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
 \end{center}
 
+% Autor e orientador em linhas distintas, alinhados à margem direita, com
+% nota de rodapé de identificação (manual, seção 7.4).
 \begin{flushright}
   \imprimirautor\footnote{\notadoautor}
 
   \imprimirorientador\footnote{\notadoorientador}
+
+  % Havendo coorientação, remova o % da linha abaixo e crie a nota
+  % correspondente em configuracoes/metadados.tex.
+  % \imprimircoorientador\footnote{\notadoorientador}
 \end{flushright}
 
 \begin{center}
@@ -19,8 +35,8 @@
 \noindent Apresente aqui, em um único parágrafo, o tema da pesquisa, seu objetivo,
 os procedimentos metodológicos, os principais resultados e a conclusão.
 Este texto é apenas uma orientação de preenchimento e deve ser substituído
-antes da entrega. Confira com o curso o limite de palavras e as demais
-exigências para o resumo.
+antes da entrega. O resumo do artigo tem de 150 a 250 palavras; confira com
+o curso as demais exigências.
 \par
 \noindent\textbf{Palavras-chave:} \palavraschave
 \par

@@ -24,9 +24,13 @@
 \usepackage{tabularx}     % tabelas com a coluna X, de largura automática
 \usepackage[table,xcdraw]{xcolor}   % cores
 
-% Liga cada referência às páginas em que ela foi citada.
+% Liga cada referência às páginas em que ela foi citada, acrescentando
+% "Citado na página 7." ao fim de cada entrada. É um apoio à revisão, e não
+% um elemento previsto na norma (manual IFPI 2024, seção 11.3) -- por isso
+% vem DESATIVADO. Se quiser usá-lo enquanto escreve, remova o % da linha e
+% lembre de comentá-la de novo antes da entrega.
 % Precisa vir ANTES de abntex2cite (carregado em configuracoes/citacoes).
-\usepackage[brazilian,hyperpageref]{backref}
+% \usepackage[brazilian,hyperpageref]{backref}
 
 \usepackage{simplecd}         % necessário para pos-textual/opcionais/capa-cd
 \usepackage[final]{pdfpages}  % insere PDFs prontos (ficha catalográfica)

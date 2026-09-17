@@ -1,43 +1,80 @@
 % =====================================================================
 % CITAÇÕES E REFERÊNCIAS
+% Manual de Normalização do IFPI (2024), seções 10 e 11
+% ABNT NBR 10520:2023 (citações) e ABNT NBR 6023:2018 (referências)
 %
 % No texto você usa \cite{chave} ou \citeonline{chave}; as obras ficam
 % cadastradas em bibliografia.bib. Nunca escreva a lista de referências
 % à mão: ela é montada a partir das citações.
 %
-% As opções abaixo são do pacote abntex2cite e definem a aparência:
-%   alf ............ sistema autor-data, "(SILVA, 2020)". A alternativa
-%                    seria o sistema numérico, "[1]".
-%   versalete ...... imprime os sobrenomes em VERSALETE (letras maiúsculas
-%                    de tamanho reduzido), como em Silva.
-%   abnt-emphasize=bf .......... destaca o título em negrito
-%   abnt-etal-list=3 ........... a partir de 3 autores, usa "et al."
-%   abnt-etal-text=it .......... "et al." em itálico
-%   abnt-and-type=& ............ liga os autores com "&"
-%   abnt-last-names=abnt ....... formata os sobrenomes no padrão ABNT
+% MUDANÇA DA NBR 10520:2023 (é o principal ajuste desta versão do modelo):
+% acabou a CAIXA ALTA na chamada da citação. Dentro ou fora dos parênteses,
+% o sobrenome vai em maiúsculas e minúsculas:
+%
+%   antes (NBR 10520:2002)   agora (NBR 10520:2023)
+%   (SILVA, 2020)            (Silva, 2020)
+%   SILVA (2020) afirma      Silva (2020) afirma
+%
+% A ENTRADA DA REFERÊNCIA, no fim do trabalho, continua em caixa alta:
+%   SILVA, João. Título da obra. São Paulo: Editora, 2020.
+%
+% As opções abaixo são do pacote abntex2cite:
+%   alf ............ sistema autor-data, "(Silva, 2020)". A alternativa
+%                    seria o sistema numérico, "[1]". Escolha UM sistema e
+%                    use-o no trabalho inteiro (manual, seção 10.2).
+%                    Atenção: o sistema numérico não pode ser usado quando
+%                    houver notas de rodapé (manual, seção 3.13).
+%   abnt-nbr10520=2023 ......... perfil definido em
+%                    abntex-ifpi/abntex-ifpi.bib. Ele faz três coisas:
+%                    a chamada sai "(Silva, 2020)"; dois autores são
+%                    ligados por "e" ("Oliveira e Leonardos (1943)"); e o
+%                    sobrenome é tudo o que vem antes da vírgula no campo
+%                    author, como pede a seção 11.4 para nomes compostos
+%                    e com grau de parentesco ("SILVA NETO, Manuel").
+%                    Trocar por "abnt-nbr10520=2002" devolve a grafia
+%                    antiga, "(SILVA, 2020)".
+%   abnt-emphasize=bf .......... destaca o título em negrito. O destaque
+%                    pode ser negrito, itálico ou sublinhado, desde que
+%                    seja uniforme em todas as referências (seção 11.3).
+%   abnt-etal-list=3 ........... com mais de 3 autores (ou seja, a partir
+%                    de 4), usa "et al." -- seção 11.4.
+%   abnt-etal-cite=3 ........... mesma regra na chamada da citação.
+%   abnt-etal-text=it .......... "et al." em itálico, como no manual.
 %   abnt-repeated-author-omit=no  repete o nome do autor a cada entrada,
 %                                 em vez de substituí-lo por um traço
+%   bibleftalign ... referências alinhadas à margem esquerda (seção 11.3).
+%                    Troque por "bibjustif" se preferir o texto justificado.
 %
 % Confirme com seu curso qual sistema ele exige antes de mudar.
 % =====================================================================
 \usepackage[
   alf,
-  versalete,
+  abnt-nbr10520=2023,
   abnt-emphasize=bf,
   abnt-etal-list=3,
+  abnt-etal-cite=3,
   abnt-etal-text=it,
-  abnt-and-type=&,
-  abnt-last-names=abnt,
-  abnt-repeated-author-omit=no
+  abnt-repeated-author-omit=no,
+  bibleftalign
 ]{abntex2cite}
 
+% Espaço simples dentro de cada referência e uma linha em branco entre
+% elas (manual, seção 3.3, alínea c, e seção 11.3).
+\setlength{\bibitemsep}{\onelineskip}
+
 % Texto do link que leva da referência de volta à página em que foi citada.
-\renewcommand{\backref}{}
-\renewcommand*{\backrefalt}[4]{%
-  \ifcase #1
-    Nenhuma citação no texto.%
-  \or
-    Citado na página #2.%
-  \else
-    Citado nas páginas #2.%
-  \fi}
+% Só tem efeito se o pacote backref estiver ativado em estrutura/preambulo.tex
+% (vem desativado, porque esse texto não faz parte da referência).
+\makeatletter
+\@ifpackageloaded{backref}{%
+  \renewcommand{\backref}{}%
+  \renewcommand*{\backrefalt}[4]{%
+    \ifcase #1
+      Nenhuma citação no texto.%
+    \or
+      Citado na página #2.%
+    \else
+      Citado nas páginas #2.%
+    \fi}%
+}{}
+\makeatother

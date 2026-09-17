@@ -1,16 +1,29 @@
 % PARTES ANTES DO TEXTO
 % Uma linha iniciada por % está desativada. Remova apenas esse % para ativá-la.
-% A seleção abaixo reproduz o modelo de artigo; confirme as exigências do curso.
+%
+% A ordem abaixo é a do Manual de Normalização do IFPI 2024 (seção 5.2.1).
+% A seleção ativa reproduz o modelo de ARTIGO (seção 7.2), em que são
+% obrigatórios apenas capa, folha de rosto, título, autor, resumo no idioma
+% do documento, resumo em outro idioma e data de aprovação.
+%
+% Para monografia, dissertação ou tese (seção 5), passam a ser obrigatórios
+% também a folha de aprovação, a ficha catalográfica e o sumário.
+%
 % Os itens opcionais estão prontos para edição em pre-textual/opcionais/.
+% Os elementos pré-textuais são CONTADOS, mas não numerados (seção 3.5).
 
 \imprimircapa
 \imprimirfolhaderosto*
 
-% Ative a ficha somente depois de adicionar o PDF indicado dentro do arquivo.
+% A ficha catalográfica vai no verso da folha de rosto e é feita por
+% bibliotecário. No artigo não é exigida; veja o arquivo antes de ativar.
 % \input{pre-textual/opcionais/ficha-catalografica}
+
+% A errata, se houver, vem logo após a folha de rosto.
 % \input{pre-textual/opcionais/errata}
 
 % Escolha somente UMA folha de aprovação, se exigida pelo curso.
+% Obrigatória em monografia, dissertação e tese (seção 5.1.2.4).
 % \imprimirfolhadeaprovacao
 % \imprimirfolhadeaprovacaoduascolunas
 
@@ -18,15 +31,20 @@
 % \input{pre-textual/opcionais/agradecimentos}
 % \input{pre-textual/opcionais/epigrafe}
 
+% Resumo no idioma do documento e em língua estrangeira: os dois são
+% obrigatórios (seções 4 e 7.2).
 \input{pre-textual/resumo}
 \input{pre-textual/resumo-lingua-estrangeira}
 
 % \input{pre-textual/opcionais/lista-de-ilustracoes}
 % \input{pre-textual/opcionais/lista-de-tabelas}
+% \input{pre-textual/opcionais/lista-de-quadros}
 % \input{pre-textual/opcionais/siglas}
 % \input{pre-textual/opcionais/simbolos}
 
-% Para incluir o sumário, ative as quatro linhas seguintes juntas.
+% SUMÁRIO: último elemento pré-textual, obrigatório em monografia,
+% dissertação e tese (seção 5.1.2.14); não consta na estrutura do artigo.
+% Para incluí-lo, ative as quatro linhas seguintes juntas.
 % \cleardoublepage
 % \pdfbookmark[0]{\contentsname}{toc}
 % \tableofcontents*

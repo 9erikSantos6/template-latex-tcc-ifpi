@@ -27,6 +27,8 @@ ARQUIVOS_DA_RAIZ = [
 
 # Recursos que o modelo usa na compilação.
 RECURSOS = [
+    Path("abntex-ifpi/abntex-ifpi.sty"),
+    Path("abntex-ifpi/abntex-ifpi.bib"),
     Path("abntex-ifpi/logo_ifpi.pdf"),
     Path("imagens/abntex2-modelo-img-grafico.pdf"),
     Path("imagens/carta_pero_vaz.png"),
@@ -37,7 +39,7 @@ RECURSOS = [
 
 # Pasta -> extensões que devem ser empacotadas.
 PASTAS = {
-    "abntex-ifpi": {".sty", ".pdf"},
+    "abntex-ifpi": {".sty", ".bib", ".pdf"},
     "capitulos": {".tex"},
     "configuracoes": {".tex"},
     "estrutura": {".tex"},

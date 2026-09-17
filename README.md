@@ -4,6 +4,20 @@ Um ponto de partida em LaTeX para escrever um artigo de conclusão de curso,
 baseado no abnTeX2 e no abntex-ifpi. Você escreve em arquivos de texto comuns e
 a compilação transforma esses arquivos em um PDF com a formatação do modelo.
 
+A formatação segue o **Manual de Normalização de Trabalhos Acadêmicos do IFPI,
+edição de 2024** (ISBN 978-65-86592-96-2), que consolida as normas ABNT NBR
+6022, 6023:2018, 6024:2012, 6027:2012, 6028:2021, 10520:2023, 14724:2011 e
+15287:2011. O resumo das regras usadas está em
+[`docs/normas-abnt/`](docs/normas-abnt/), e
+[`docs/normas-abnt/conformidade.md`](docs/normas-abnt/conformidade.md) diz,
+regra por regra, em que arquivo cada uma foi aplicada.
+
+> **Se você usava a versão anterior deste modelo**, a mudança mais visível é a
+> das citações: a NBR 10520:2023 acabou com a caixa alta na chamada. Onde saía
+> `(SILVA, 2020)` agora sai `(Silva, 2020)`. A entrada da referência, no fim do
+> trabalho, continua em caixa alta. Veja a seção
+> [O que mudou na atualização de 2024](#o-que-mudou-na-atualização-de-2024).
+
 **Nunca usou LaTeX? Siga os cinco passos abaixo.** Não é preciso entender os
 arquivos de estilo para escrever seu trabalho. Se travar em algum ponto, o
 `docs/guia-iniciante.md` explica cada tarefa com mais calma.
@@ -92,6 +106,7 @@ ciclo completo terminar. Se persistir, veja a tabela de problemas no
 | Apêndices, anexos, glossário e índice | `pos-textual/` e `estrutura/pos-textual.tex` |
 | Figuras e gráficos | `imagens/` |
 | Fonte tipográfica, espaçamentos, cores e estilo de citação | `configuracoes/` |
+| Regras de formatação da norma (títulos, paginação, quadros, legendas) | `abntex-ifpi/abntex-ifpi.sty` |
 
 ## O que normalmente não precisa ser alterado
 
@@ -101,6 +116,9 @@ ciclo completo terminar. Se persistir, veja a tabela de problemas no
   memoir e os nomes em português do Babel. É carregado antes do
   `\documentclass`, de propósito.
 - `abntex-ifpi/`: estilo institucional, logotipo e suporte a diagramas UML.
+  O `abntex-ifpi.sty` concentra as regras de formatação do manual de 2024;
+  o `abntex-ifpi.bib` só carrega o perfil de citação da NBR 10520:2023 — não
+  cadastre obras nele.
 - `.latexmkrc`: configuração da compilação local.
 - `.gitignore`: lista dos arquivos gerados, que não devem ser versionados.
 - `scripts/empacotar.py`: gera o ZIP de distribuição (veja `docs/publicacao.md`).
@@ -111,23 +129,50 @@ ciclo completo terminar. Se persistir, veja a tabela de problemas no
 
 - [ ] Troque todos os dados de `configuracoes/metadados.tex`, inclusive a data
       de apresentação — ela aparece no rodapé da página do abstract mesmo sem
-      folha de aprovação.
+      folha de aprovação, e vai no formato `DD/MM/AAAA`.
 - [ ] Apague os e-mails `example.com` das notas de rodapé dos autores.
-- [ ] Substitua o resumo, o abstract e o texto de todos os capítulos.
-- [ ] Remova as figuras e tabelas de demonstração. Procure por `EXEMPLO` nos
-      arquivos: todo bloco de demonstração está marcado assim.
+- [ ] Substitua o resumo, o abstract e o texto de todos os capítulos. O resumo
+      do artigo tem de 150 a 250 palavras, em parágrafo único.
+- [ ] Confira as palavras-chave: de 3 a 5, separadas por ponto e vírgula,
+      terminadas em ponto e com iniciais minúsculas.
+- [ ] Remova as figuras, tabelas e quadros de demonstração. Procure por
+      `EXEMPLO` nos arquivos: todo bloco de demonstração está marcado assim.
+- [ ] Confirme que toda ilustração, tabela e quadro é citado no texto e tem
+      indicação de fonte — obrigatória mesmo quando o material é seu.
 - [ ] Desative o apêndice de exemplo em `estrutura/pos-textual.tex` se você não
       tiver apêndice, ou substitua o conteúdo dele.
 - [ ] Apague de `bibliografia.bib` as entradas de exemplo (chaves começadas por
-      `exemplo-`) e as obras que você não citou.
+      `exemplo-`) e as obras que você não citou. Só entram nas referências as
+      obras efetivamente citadas.
 - [ ] Ative os elementos exigidos pelo seu curso. Sumário e listas vêm
-      desativados na configuração inicial de artigo.
+      desativados na configuração inicial de artigo, porque a estrutura do
+      artigo (seção 7.2 do manual) não os exige.
 - [ ] Revise o PDF inteiro: legendas, numeração, referências e apêndices.
 - [ ] Confirme com o curso ou a biblioteca as exigências de apresentação.
 
-**Este projeto não certifica conformidade com as normas vigentes.** Ele preserva
-a base visual e o estilo de citações do modelo recebido. A modalidade inicial é
-**artigo**, não um modelo completo de monografia.
+## O que mudou na atualização de 2024
+
+| Item | Antes | Agora | Regra |
+| --- | --- | --- | --- |
+| Chamada da citação | `(SILVA, 2020)` em versalete | `(Silva, 2020)` | NBR 10520:2023; manual, seção 10 |
+| Ligação entre dois autores | `Silva & Souza (2020)` | `Silva e Souza (2020)` | manual, seção 10.2 |
+| Sobrenome composto ou com grau de parentesco | `NETO, M. S.` | `SILVA NETO, M.` | manual, seção 11.4 |
+| Recuo de parágrafo | 1,5 cm | 1,25 cm | manual, seção 3.4, alínea c |
+| Entrelinhas do artigo | 1,5 | simples | manual, seções 3.6.1 e 7.4 |
+| Indicativo de seção | `1&nbsp;&nbsp;&nbsp;&nbsp;INTRODUÇÃO` | `1 INTRODUÇÃO` | manual, seções 3.6 e 3.7 |
+| Paginação | tamanho 12, sem posição definida | tamanho 10, a 2 cm do topo e da borda direita | manual, seção 3.5 |
+| Filete da nota de rodapé | ~6,4 cm | 5 cm | manual, seção 3.13 |
+| Título de tabela | tamanho 10 | tamanho 12 (a fonte continua em 10) | manual, seções 3.1 e 3.12 |
+| Legendas longas | alinhadas à esquerda | centralizadas | manual, seção 3.11 |
+| Títulos pós-textuais | `Referências`, `Apêndices` | `REFERÊNCIAS`, `APÊNDICES` | manual, seções 3.6.1 e 5.2.3 |
+| Sumário | sem destaque por nível | mesmos destaques do texto | manual, seção 5.1.2.14 |
+| Quadro | não existia (só tabela) | ambiente `quadro`, com numeração e lista próprias | manual, seção 3.12 |
+| Referências | justificadas | alinhadas à margem esquerda | manual, seção 11.3 |
+| "Citado na página X" nas referências | ligado | desligado (é apoio à revisão, não elemento da referência) | manual, seção 11.3 |
+
+Recursos que passaram a ter exemplo pronto no modelo: alíneas e subalíneas
+(`alineas`/`subalineas`), citação direta curta, citação indireta, citação de
+citação (`\apud`), quadro e equação numerada.
 
 ## Créditos e licença
 
@@ -135,7 +180,13 @@ Modelo derivado do abntex-ifpi, criado por Rafael Madureira Lins de Araújo, com
 adaptações descritas na versão recebida por Tulio Vidal, IFPI — Campus Corrente
 (`tulio.vidal@ifpi.edu.br`). A documentação original informa como bases um
 modelo de monografia do IFPI e o Manual de Normalização de Trabalhos Acadêmicos
-do IFPI de 2022.
+do IFPI de 2022; esta versão atualiza a formatação para a **edição de 2024** do
+mesmo manual.
+
+**Este projeto não é uma publicação oficial do IFPI e não certifica
+conformidade.** A modalidade implementada é **artigo**, não um modelo completo
+de monografia. Confirme sempre as exigências com o seu curso e com a
+biblioteca.
 
 O `LICENSE` (MIT) cobre o código e a documentação deste repositório. Ele **não**
 se estende a:

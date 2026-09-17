@@ -9,15 +9,28 @@ seu trabalho pretende investigar. Cite as fontes efetivamente consultadas.
 \subsection{Citações e referências}
 
 % \citeonline insere o nome do autor na frase; \cite usa parênteses.
-Exemplo do comando de citação no corpo da frase:
-\citeonline{SilvaNeto2019Credibility}. Exemplo entre parênteses:
+% Desde a NBR 10520:2023 a chamada sai em maiúsculas e minúsculas
+% -- "(Silva, 2020)" e não mais "(SILVA, 2020)". Quem cuida disso é
+% configuracoes/citacoes.tex; você não escreve o nome à mão.
+Quando a responsabilidade está incluída na sentença, fica só a data entre
+parênteses: \citeonline{SilvaNeto2019Credibility} descrevem o problema.
+Quando a responsabilidade está entre parênteses, entram autoria e data:
 \cite{SilvaNeto2019Credibility}. Os dados são recuperados automaticamente
 do arquivo de bibliografia.
 
-\subsubsection{Citação em bloco}
+\subsubsection{Citação direta de até três linhas}
 
-O ambiente a seguir demonstra a formatação de uma citação longa. O conteúdo
-é uma instrução de preenchimento, não uma transcrição de uma obra publicada.
+A citação direta curta vai entre aspas duplas, no mesmo tamanho e tipo de
+fonte do texto, com indicação da página: ``substitua este trecho pela
+transcrição exata da obra consultada'' \cite[p.~7]{SilvaNeto2019Credibility}.
+Aspas simples marcam uma `citação dentro da citação'.
+
+\subsubsection{Citação direta com mais de três linhas}
+
+Passando de três linhas, a citação é destacada do texto, sem aspas, com
+recuo de 4~cm, em tamanho 10 e espaçamento simples. O ambiente abaixo já
+aplica tudo isso; o conteúdo é uma instrução de preenchimento, não uma
+transcrição de obra publicada.
 
 \begin{citacao}
   Substitua este parágrafo pelo trecho exato da obra consultada. Identifique
@@ -26,10 +39,42 @@ O ambiente a seguir demonstra a formatação de uma citação longa. O conteúdo
   requisitos de apresentação adotados pelo seu curso antes da entrega.
 \end{citacao}
 
+Supressões, acréscimos e ênfases são indicados entre colchetes: [...] para
+o trecho omitido, [comentário] para a interpolação e ``grifo nosso'' ao
+fim da chamada quando o destaque for seu. Se o destaque já existir no
+original, não se informa o grifo.
+
+\subsubsection{Citação indireta e citação de citação}
+
+Na citação indireta, ou paráfrase, você reescreve a ideia com suas
+palavras, sem aspas e sem mudar o tamanho da fonte; a página é opcional
+\cite{van86}. O manual recomenda privilegiar a citação indireta.
+
+% \apud{obra citada}{obra consultada} -- só a obra CONSULTADA vai para as
+% referências. Use apenas quando não houver acesso ao original.
+A citação de citação é reservada a casos excepcionais, quando não se tem
+acesso ao original: \apud{van86}{araujo2012}.
+
 % Para indicar uma página real, use \cite[p.~número]{chave-da-obra}.
 Não digite a lista de referências manualmente: ela é produzida a partir das
-citações presentes no documento. As referências antigas mantidas no banco
-de exemplos não representam uma verificação das normas em vigor.
+citações presentes no documento. Só entram nas referências as obras
+efetivamente citadas.
+
+\subsection{Alíneas e subalíneas}
+
+O texto que antecede as alíneas termina em dois pontos, e cada alínea
+começa por letra minúscula e termina em ponto e vírgula, exceto a última,
+que termina em ponto final. São estes os critérios de inclusão adotados:
+
+\begin{alineas}
+  \item primeira alínea, indicada por letra minúscula seguida de parêntese;
+  \item segunda alínea, que se desdobra nas subalíneas abaixo:
+  \begin{subalineas}
+    \item subalínea iniciada por travessão, com recuo em relação à alínea;
+    \item segunda subalínea, terminada em ponto e vírgula;
+  \end{subalineas}
+  \item última alínea, terminada em ponto final.
+\end{alineas}
 
 % EXEMPLO -- as duas figuras abaixo vieram do modelo original e não têm
 % relação com o seu tema. Troque as imagens, as legendas e as fontes.

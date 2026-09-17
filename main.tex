@@ -2,14 +2,32 @@
 % Primeira vez no LaTeX? Comece pelo README.md e pelo docs/guia-iniciante.md.
 % Dados pessoais: configuracoes/metadados.tex.
 % Texto do trabalho: capitulos/. Ordem das partes: estrutura/.
+%
+% Formatação conforme o Manual de Normalização de Trabalhos Acadêmicos do
+% IFPI, 2024. O resumo das regras está em docs/normas-abnt/.
 
 \input{configuracoes/compatibilidade}
 
+% Opções da classe, uma a uma:
+%   article ......... modalidade artigo científico (manual, seção 7).
+%                     Numera com \section; para monografia, remova.
+%   12pt ............ tamanho da fonte do trabalho inteiro (seção 3.1, c).
+%   oneside ......... impressão/entrega só no anverso. Para imprimir em
+%                     frente e verso, troque por "twoside": as margens
+%                     espelham sozinhas, como pede a seção 3.2.
+%   a4paper ......... formato do papel (seção 3.4, alínea d).
+%   chapter=TITLE ... títulos sem indicativo numérico (REFERÊNCIAS,
+%                     APÊNDICE, ANEXO, GLOSSÁRIO) em caixa alta, como
+%                     exigem as seções 3.6.1 e 5.2.3.
+%   section=TITLE ... seção primária em caixa alta (seção 3.7).
+%   subsection=TITLE  seção secundária em caixa alta (seção 3.7).
+%   english/brazilian idiomas carregados; o principal é o português.
 \documentclass[
   article,
   12pt,
   oneside,
   a4paper,
+  chapter=TITLE,
   section=TITLE,
   subsection=TITLE,
   english,

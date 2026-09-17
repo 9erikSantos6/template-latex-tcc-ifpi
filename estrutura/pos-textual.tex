@@ -1,16 +1,26 @@
 % PARTES DEPOIS DO TEXTO
 % Remova o % inicial de uma linha \input para ativar o item correspondente.
+%
+% Ordem exigida pelo Manual de Normalização do IFPI 2024 (seções 5.2.3 e
+% 7.4): REFERÊNCIAS, GLOSSÁRIO, APÊNDICE, ANEXO e, no artigo, os
+% AGRADECIMENTOS por último. Todos os títulos saem em caixa alta, negrito,
+% tamanho 12 e centralizados, sem indicativo numérico.
+%
+% Apêndices e anexos têm paginação contínua, seguindo o texto principal
+% (seção 3.5, alínea d).
 \postextual
 
-% Geradas automaticamente a partir das citações e de bibliografia.bib.
+% Obrigatório. Gerado automaticamente a partir das citações e de
+% bibliografia.bib: só entram as obras efetivamente CITADAS (seção 5.2.3).
 \input{pos-textual/referencias}
 
 % \input{pos-textual/opcionais/glossario}
 
-% Apêndice: material produzido por você. Comente se não for utilizar.
+% Apêndice: material produzido por VOCÊ (questionário, roteiro, código).
 \input{pos-textual/apendices}
 
-% Anexo: material de terceiros. Verifique a fonte e a permissão de uso.
+% Anexo: material de TERCEIROS (lei, certidão, recorte). Verifique a fonte
+% e a permissão de uso.
 % \input{pos-textual/anexos}
 
 % Índice remissivo: consulte a etapa MakeIndex em docs/guia-iniciante.md.
