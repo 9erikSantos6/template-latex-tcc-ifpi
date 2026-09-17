@@ -1,0 +1,63 @@
+% METODOLOGIA: descreva como a pesquisa foi realizada, não apenas sua finalidade.
+\section{Metodologia}
+\label{sec:metodologia}
+
+Descreva o tipo de pesquisa, o contexto, os materiais ou participantes, os
+critérios de seleção, os instrumentos de coleta e os procedimentos de análise.
+Forneça detalhes suficientes para que o leitor compreenda as etapas realizadas.
+Quando aplicável, apresente os cuidados éticos e as limitações do método.
+
+Uma explicação complementar pode ser inserida em nota de rodapé\footnote{Este
+é um exemplo de nota. Substitua-o por uma informação relevante ou remova-o.}.
+
+% EXEMPLO -- a tabela abaixo é conteúdo de demonstração do modelo original.
+\subsection{Exemplo de tabela com texto}
+
+A \autoref{tab-nivinv} ilustra uma tabela com células de texto e largura
+ajustada à página. O conteúdo é um exemplo herdado do modelo original.
+
+\begin{table}[htb]
+  \centering
+  \ABNTEXfontereduzida
+  \caption{Níveis de investigação}
+  \label{tab-nivinv}
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X}
+    \toprule
+    \textbf{Nível} & \textbf{Insumos} & \textbf{Sistema de investigação} & \textbf{Produtos} \\
+    \midrule
+    Metanível & Filosofia da ciência & Epistemologia & Paradigma \\
+    Nível do objeto & Paradigmas do metanível e evidências do nível inferior
+      & Ciência & Teorias e modelos \\
+    Nível inferior & Modelos, métodos e problemas & Prática & Solução de problemas \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{\citeonline{van86}.}
+\end{table}
+
+\subsection{Exemplo de tabela com números}
+
+A \autoref{tabela-ibge} usa o comando de formatação de tabelas do modelo,
+com indicação da fonte e uma nota. Os valores são fictícios.
+
+\begin{table}[htb]
+  \centering
+  \IBGEtab{%
+    \caption{Participantes por etapa: exemplo fictício}
+    \label{tabela-ibge}
+  }{%
+    \begin{tabular}{lrr}
+      \toprule
+      \textbf{Etapa} & \textbf{Convidados} & \textbf{Participantes} \\
+      \midrule
+      Inicial & 30 & 24 \\
+      Final & 24 & 20 \\
+      \bottomrule
+    \end{tabular}
+  }{%
+    \fonte{Elaboração própria.}
+    \nota{Valores usados somente para demonstrar a formatação.}
+  }
+\end{table}

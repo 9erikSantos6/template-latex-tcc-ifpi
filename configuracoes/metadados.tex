@@ -1,0 +1,152 @@
+% =====================================================================
+% COMECE AQUI.
+%
+% Regra de ouro: mude apenas o texto que está entre as chaves { }.
+% Não apague o comando (a palavra que começa com \), nem as chaves.
+%
+%   \autor{Nome do aluno}
+%   ^^^^^^ comando        ^ conteúdo: é só isto que você troca
+%
+% Estes dados são reaproveitados na capa, na folha de rosto, no resumo,
+% nas notas de rodapé e nas propriedades do PDF. Preencher aqui basta;
+% você não precisa repetir seu nome em nenhum outro arquivo.
+% =====================================================================
+
+
+% ---------------------------------------------------------------------
+% 1. CURSO E CAMPUS  (obrigatório)
+%
+% Definidos uma única vez e reaproveitados em todos os lugares abaixo.
+% Se você trocar o curso aqui, a capa, a folha de rosto e a nota de
+% rodapé mudam juntas.
+% ---------------------------------------------------------------------
+\newcommand{\meucurso}{Análise e Desenvolvimento de Sistemas}
+\newcommand{\meucampus}{Campus Pedro II}
+
+
+% ---------------------------------------------------------------------
+% 2. IDENTIFICAÇÃO DO TRABALHO  (obrigatório)
+% ---------------------------------------------------------------------
+
+% Título do artigo. Se houver subtítulo, separe-o por dois-pontos.
+\titulo{Título do trabalho: subtítulo (se houver)}
+
+% Seu nome completo, como deve aparecer na capa.
+\autor{Nome do aluno}
+
+% Cidade e estado que aparecem no rodapé da capa e da folha de rosto.
+\local{Pedro II, Piauí}
+
+% Ano de conclusão. Aparece logo abaixo da cidade.
+\data{2026}
+
+% Nome do curso para o abnTeX2 (usado na capa de CD, se você ativá-la).
+\nomedocurso{\meucurso}
+
+
+% ---------------------------------------------------------------------
+% 3. INSTITUIÇÃO  (obrigatório)
+%
+% ATENÇÃO: aqui o \\ no fim da linha é obrigatório — ele força a quebra
+% de linha no cabeçalho da capa. Mantenha um \\ ao fim de cada linha,
+% menos na última. (No texto corrido dos capítulos, ao contrário, você
+% NÃO deve usar \\ para quebrar linhas.)
+%
+% A terceira linha traz o nome do curso como ele aparece no diploma
+% ("TECNOLOGIA EM ..."). Cursos de bacharelado ou licenciatura devem
+% trocar esse prefixo, ou apagá-lo.
+% ---------------------------------------------------------------------
+\instituicao{%
+  INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PIAUÍ\\
+  \MakeUppercase{\meucampus}\\
+  TECNOLOGIA EM \MakeUppercase{\meucurso}}
+
+
+% ---------------------------------------------------------------------
+% 4. TEXTO DA FOLHA DE ROSTO  (obrigatório)
+%
+% \tipotrabalho vai só nas propriedades do PDF (não aparece na página).
+% \preambulo é o parágrafo que fica no lado direito da folha de rosto,
+% explicando a que o trabalho se destina. Cuidado: este \preambulo não
+% tem relação com o "preâmbulo" do LaTeX (o arquivo estrutura/preambulo
+% .tex, que carrega os pacotes). São coisas diferentes com o mesmo nome.
+% ---------------------------------------------------------------------
+\tipotrabalho{Trabalho de Conclusão de Curso (Artigo Científico)}
+
+\preambulo{Trabalho de Conclusão de Curso (artigo científico) apresentado
+como exigência parcial para obtenção do diploma do Curso de \meucurso\ do
+Instituto Federal de Educação, Ciência e Tecnologia do Piauí, \meucampus.}
+
+
+% ---------------------------------------------------------------------
+% 5. ORIENTAÇÃO  (orientador obrigatório; coorientador opcional)
+%
+% Escreva a titulação junto com o nome, por exemplo "Prof. Dr. Fulano".
+% O rótulo "Orientador:" / "Coorientador:" é inserido automaticamente.
+% ---------------------------------------------------------------------
+\orientador{Prof. Dr. Nome do orientador}
+
+% Sem coorientação? Deixe as chaves vazias: a linha some da folha de rosto.
+\coorientador{}
+
+
+% ---------------------------------------------------------------------
+% 6. BANCA EXAMINADORA  (opcional)
+%
+% Estes nomes só aparecem se você ativar uma folha de aprovação em
+% estrutura/pre-textual.tex. Enquanto ela estiver desativada, preencher
+% aqui não muda nada no PDF.
+%
+%   \imprimirfolhadeaprovacao             -> orientador + membro um + dois
+%   \imprimirfolhadeaprovacaoduascolunas  -> os quatro nomes, em 2 colunas
+%
+% Tem só dois avaliadores? Use a primeira versão e deixe \membrotres vazio.
+% ---------------------------------------------------------------------
+\membroum{Prof. Me. Nome do primeiro membro da banca}
+\membrodois{Prof. Me. Nome do segundo membro da banca}
+\membrotres{Prof. Dr. Nome do terceiro membro da banca}
+
+% Instituição impressa sob cada assinatura da banca. Descomente e edite
+% apenas se a banca for de outra instituição.
+% \renewcommand{\instituicaodabanca}{Instituto Federal do Piauí (IFPI)}
+
+
+% ---------------------------------------------------------------------
+% 7. DATA DE APRESENTAÇÃO  (obrigatório)
+%
+% CUIDADO: esta data já aparece no PDF, no rodapé da página do abstract,
+% mesmo com a folha de aprovação desativada. Se você não trocar, sai
+% "Data de aprovação: Dia de mês de ano" no trabalho entregue.
+% Exemplo de preenchimento: \dataapresentacao{20 de novembro de 2026}
+% ---------------------------------------------------------------------
+\dataapresentacao{Dia de mês de ano}
+
+
+% ---------------------------------------------------------------------
+% 8. NOTAS DE RODAPÉ DOS AUTORES  (obrigatório)
+%
+% Aparecem como nota de rodapé na primeira página, junto dos nomes.
+% Repare que aqui há DOIS pares de chaves: o primeiro é o nome do
+% comando, o segundo é o texto. Troque só o texto do segundo par.
+%
+%   \newcommand{\notadoautor}{este texto aqui}
+%                ^nome^      ^--- o que você edita ---^
+%
+% Troque também os endereços: não deixe example.com no trabalho final.
+% ---------------------------------------------------------------------
+\newcommand{\notadoautor}{Graduando(a) em \meucurso\ pelo IFPI.
+Contato: \url{aluno@example.com}.}
+
+\newcommand{\notadoorientador}{Professor(a) do Instituto Federal do Piauí.
+Contato: \url{orientador@example.com}.}
+
+
+% ---------------------------------------------------------------------
+% 9. PALAVRAS-CHAVE  (obrigatório)
+%
+% Texto simples, sem comandos de formatação, separado por ponto e vírgula
+% e terminado em ponto final. \keywords é a versão em inglês, usada no
+% abstract; traduza as mesmas palavras, não escolha outras.
+% ---------------------------------------------------------------------
+\newcommand{\palavraschave}{modelo; artigo; pesquisa.}
+\newcommand{\keywords}{template; article; research.}

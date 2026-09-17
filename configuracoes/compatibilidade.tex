@@ -1,0 +1,14 @@
+% COMPATIBILIDADE TÉCNICA: carregado antes de \documentclass.
+% Mantém a integração entre abnTeX2, memoir e os nomes em português do Babel.
+% Não remova ao personalizar o texto do trabalho.
+\AddToHook{class/memoir/after}{
+  \RequirePackage[english,main=brazilian]{babel}
+  \PassOptionsToPackage{brazil}{babel}
+  \ProvideDocumentCommand{\settocpreprocessor}{m +m}{}
+  \RenewDocumentCommand{\settocpreprocessor}{m +m}{
+    \AddToHook{cmd/mempreadd#1totochook/before}{#2}
+  }
+}
+\AddToHook{class/abntex2/after}{
+  \addto\captionsbrazilian{\captionsbrazil}
+}

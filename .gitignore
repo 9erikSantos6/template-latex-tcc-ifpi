@@ -1,0 +1,32 @@
+# Arquivos gerados pela compilação do LaTeX.
+# Nada aqui precisa ser versionado nem enviado aos colegas: tudo é recriado
+# a cada compilação. Os PDFs do modelo (imagens/ e abntex-ifpi/) NÃO entram
+# nesta lista — eles são recursos do projeto, não resultados de compilação.
+
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+
+# PDF gerado a partir de main.tex (os PDFs de imagens/ continuam versionados).
+/main.pdf
+
+# Pacote gerado por scripts/empacotar.py.
+/dist/
+
+# Preferências de editor.
+.vscode/
+.idea/
+.DS_Store

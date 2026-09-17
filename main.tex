@@ -1,0 +1,32 @@
+% ARQUIVO PRINCIPAL: compile este arquivo, não os capítulos separados.
+% Primeira vez no LaTeX? Comece pelo README.md e pelo docs/guia-iniciante.md.
+% Dados pessoais: configuracoes/metadados.tex.
+% Texto do trabalho: capitulos/. Ordem das partes: estrutura/.
+
+\input{configuracoes/compatibilidade}
+
+\documentclass[
+  article,
+  12pt,
+  oneside,
+  a4paper,
+  section=TITLE,
+  subsection=TITLE,
+  english,
+  brazilian
+]{abntex2}
+
+\input{estrutura/preambulo}
+
+\begin{document}
+\selectlanguage{brazilian}
+
+\input{estrutura/pre-textual}
+
+\textual
+\input{estrutura/textual}
+
+\bookmarksetup{startatroot}
+\include{estrutura/pos-textual}
+
+\end{document}

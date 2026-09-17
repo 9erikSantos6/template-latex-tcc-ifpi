@@ -1,0 +1,180 @@
+%% =====================================================================
+%% BIBLIOGRAFIA
+%%
+%% Como funciona: cada obra vira uma "entrada" neste arquivo. No texto
+%% você escreve \cite{chave} ou \citeonline{chave}, e a lista de
+%% referências no fim do PDF é montada sozinha, só com as obras que você
+%% realmente citou. Uma entrada cadastrada e nunca citada NAO aparece.
+%%
+%% Anatomia de uma entrada (veja a primeira delas, logo abaixo):
+%%
+%%   1. o tipo da obra, precedido de arroba, e a CHAVE que você inventa
+%%      para se referir a ela -- sem espaços e sem acentos;
+%%   2. os campos, um por linha, separados por vírgula;
+%%   3. o último campo NAO leva vírgula, e a entrada fecha com }
+%%
+%% Regras que evitam a maioria dos erros:
+%%   - A chave é única. Use algo como sobrenomeAnoPalavra (silva2020redes).
+%%   - Vários autores são separados por "and", NUNCA por "e":
+%%     author = {Silva, Ana and Souza, Bruno and Lima, Carla}
+%%   - A vírgula dentro de um nome separa sobrenome de nome:
+%%     {Silva, Ana Maria} = sobrenome Silva, nome Ana Maria.
+%%   - Acentos podem ser digitados normalmente (o arquivo é UTF-8). A forma
+%%     antiga, {\c c} e {\~a}, também funciona.
+%%   - Palavras que precisam manter a maiúscula ficam entre chaves:
+%%     title = {O uso do {L}a{T}e{X} no {B}rasil}
+%%
+%% ATENÇÃO: neste arquivo, o caractere arroba SEMPRE inicia uma entrada,
+%% mesmo dentro de uma linha iniciada por %. Por isso os comentários daqui
+%% não usam esse caractere. Para desativar uma entrada, apague-a.
+%%
+%% As entradas abaixo são EXEMPLOS. Troque-as pelas obras que você
+%% consultou de verdade -- não basta mudar a chave: autor, título, ano e
+%% veículo precisam corresponder à publicação real.
+%% =====================================================================
+
+
+%% ---------------------------------------------------------------------
+%% Obras citadas nos capítulos de demonstração.
+%% Ao substituir os textos de exemplo, apague também estas entradas.
+%% ---------------------------------------------------------------------
+
+@article{SilvaNeto2019Credibility,
+  author  = {Silva Neto, Manuel and Gomes, Danielo and Soares, Jose},
+  title   = {Credibility on Crowdsensing Data Acquisition},
+  journal = {Journal of Communication and Information Systems},
+  volume  = {34},
+  number  = {1},
+  pages   = {248-269},
+  year    = {2019},
+  month   = {Oct.},
+  doi     = {10.14209/jcis.2019.26},
+  url     = {https://jcis.sbrt.org.br/jcis/article/view/673},
+  urlaccessdate = {16 set. 2026}
+}
+
+@mastersthesis{araujo2012,
+  author   = {Araujo, Lauro C{\'e}sar},
+  title    = {Configura{\c c}{\~a}o},
+  subtitle = {uma perspectiva de {A}rquitetura da {I}nforma{\c c}{\~a}o da
+              {E}scola de {B}ras{\'\i}lia},
+  school   = {Universidade de Bras{\'\i}lia},
+  address  = {Bras{\'\i}lia},
+  month    = {mar.},
+  year     = {2012}
+}
+
+@article{van86,
+  author  = {van Gigch, John P. and Pipino, Leo L.},
+  title   = {In search for a paradigm for the discipline of information systems},
+  journal = {Future Computing Systems},
+  volume  = {1},
+  number  = {1},
+  pages   = {71-97},
+  year    = {1986}
+}
+
+@article{limaarranjo,
+  author  = {Lima, L. C. O.},
+  title   = {Arranjo produtivo local da banana org{\^a}nica},
+  journal = {Relat{\'o}rio de Pesquisa},
+  year    = {2006}
+}
+
+
+%% ---------------------------------------------------------------------
+%% MODELOS POR TIPO DE OBRA
+%%
+%% Copie o bloco do tipo certo, cole no fim do arquivo, troque a chave e
+%% preencha os campos. Estes modelos não aparecem no PDF enquanto não
+%% forem citados, então você pode deixá-los aqui enquanto escreve e
+%% apagá-los na revisão final.
+%%
+%% Qual tipo usar:
+%%   book          livro inteiro
+%%   incollection   capítulo de livro com organizador
+%%   article        artigo de periódico ou revista científica
+%%   inproceedings  trabalho publicado em anais de evento
+%%   mastersthesis  dissertação de mestrado
+%%   phdthesis      tese de doutorado
+%%   manual         norma técnica, manual, documentação
+%%   misc           site, repositório, vídeo e o que não se encaixa acima
+%% ---------------------------------------------------------------------
+
+@book{exemplo-livro,
+  author    = {Sobrenome, Nome and Outro Sobrenome, Outro Nome},
+  title     = {Título do livro},
+  subtitle  = {subtítulo, se houver},
+  edition   = {2},
+  address   = {Cidade},
+  publisher = {Nome da editora},
+  year      = {2024}
+}
+
+@incollection{exemplo-capitulo-de-livro,
+  author    = {Sobrenome, Nome},
+  title     = {Título do capítulo},
+  booktitle = {Título do livro que contém o capítulo},
+  editor    = {Sobrenome do Organizador, Nome},
+  pages     = {101-120},
+  address   = {Cidade},
+  publisher = {Nome da editora},
+  year      = {2023}
+}
+
+@article{exemplo-artigo,
+  author  = {Sobrenome, Nome},
+  title   = {Título do artigo},
+  journal = {Nome do periódico},
+  volume  = {12},
+  number  = {3},
+  pages   = {45-60},
+  year    = {2022},
+  doi     = {10.0000/exemplo}
+}
+
+@inproceedings{exemplo-anais,
+  author    = {Sobrenome, Nome},
+  title     = {Título do trabalho apresentado},
+  booktitle = {Anais do Nome do Evento},
+  address   = {Cidade},
+  publisher = {Nome da entidade organizadora},
+  pages     = {1-10},
+  year      = {2021}
+}
+
+@mastersthesis{exemplo-dissertacao,
+  author = {Sobrenome, Nome},
+  title  = {Título da dissertação},
+  type   = {Disserta{\c c}{\~a}o de Mestrado},
+  school = {Nome da universidade},
+  address = {Cidade},
+  year   = {2020}
+}
+
+@phdthesis{exemplo-tese,
+  author  = {Sobrenome, Nome},
+  title   = {Título da tese},
+  type    = {Tese de Doutorado},
+  school  = {Nome da universidade},
+  address = {Cidade},
+  year    = {2019}
+}
+
+@manual{exemplo-norma,
+  author       = {{ASSOCIA{\c C}{\~A}O BRASILEIRA DE NORMAS T{\'E}CNICAS}},
+  title        = {NBR 14724},
+  subtitle     = {informa{\c c}{\~a}o e documenta{\c c}{\~a}o: trabalhos
+                  acad{\^e}micos: apresenta{\c c}{\~a}o},
+  address      = {Rio de Janeiro},
+  organization = {ABNT},
+  year         = {2011}
+}
+
+@misc{exemplo-site,
+  author  = {Sobrenome, Nome},
+  title   = {Título da página},
+  year    = {2025},
+  url     = {https://exemplo.org/pagina},
+  urlaccessdate = {16 set. 2026}
+}

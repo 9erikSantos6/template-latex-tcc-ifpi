@@ -1,0 +1,35 @@
+% APÊNDICES: materiais elaborados por você, como questionários e roteiros.
+% Para retirar todos os apêndices, comente sua inclusão em estrutura/pos-textual.tex.
+\begin{apendicesenv}
+\renewcommand{\appendixtocname}{\texorpdfstring{\MakeUppercase{\apendicesname}}{\apendicesname}}
+
+% Comente a linha seguinte para retirar a página de abertura dos apêndices.
+\partapendices
+
+% Cada \chapter cria um apêndice, com letra atribuída automaticamente.
+% EXEMPLO -- apague este apêndice inteiro ou substitua seu conteúdo.
+\chapter{Exemplo de apêndice}
+\label{apendice:trabalhos}
+
+Esta página é uma demonstração: o apêndice vem ativado para você ver como
+ele aparece. Substitua o conteúdo por um material complementar produzido
+na sua pesquisa (questionário, roteiro de entrevista, código-fonte) ou
+desative o apêndice comentando a linha correspondente em
+\texttt{estrutura/pos-textual.tex}.
+
+\begin{table}[htb]
+  \centering
+  \ABNTEXfontereduzida
+  \caption{Visão geral dos trabalhos selecionados: exemplo fictício}
+  \label{tab:appendix-trabalhos-aprovados}
+  \begin{tabularx}{\linewidth}{llX}
+    \toprule
+    \textbf{Identificador} & \textbf{Tipo} & \textbf{Descrição} \\
+    \midrule
+    S01 & Artigo & Síntese do primeiro trabalho selecionado. \\
+    S02 & Dissertação & Síntese do segundo trabalho selecionado. \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+\end{table}
+\end{apendicesenv}

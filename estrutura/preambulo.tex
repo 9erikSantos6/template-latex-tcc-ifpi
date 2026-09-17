@@ -1,0 +1,50 @@
+% =====================================================================
+% PREÂMBULO: configuração técnica do documento.
+%
+% Normalmente você NÃO precisa editar este arquivo para escrever o TCC.
+% Ele carrega os "pacotes", que são extensões que acrescentam recursos ao
+% LaTeX (imagens, tabelas, cores, links...). A ordem importa: alguns
+% pacotes precisam ser carregados antes de outros.
+% =====================================================================
+
+% Acentuação e hifenização corretas em português com o pdfLaTeX.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Fonte do texto (Times por padrão). Para trocar, edite o arquivo abaixo.
+\input{configuracoes/tipografia}
+
+\usepackage{courier}      % fonte de largura fixa, usada em \codigo{...}
+\usepackage{indentfirst}  % recua também o primeiro parágrafo de cada seção
+\usepackage{graphicx}     % \includegraphics
+\usepackage{float}        % posicionamento de figuras e tabelas
+\usepackage{microtype}    % melhora o espaçamento entre letras e palavras
+\usepackage{booktabs}     % \toprule, \midrule, \bottomrule das tabelas
+\usepackage{multirow,array}   % células que ocupam várias linhas
+\usepackage{tabularx}     % tabelas com a coluna X, de largura automática
+\usepackage[table,xcdraw]{xcolor}   % cores
+
+% Liga cada referência às páginas em que ela foi citada.
+% Precisa vir ANTES de abntex2cite (carregado em configuracoes/citacoes).
+\usepackage[brazilian,hyperpageref]{backref}
+
+\usepackage{simplecd}         % necessário para pos-textual/opcionais/capa-cd
+\usepackage[final]{pdfpages}  % insere PDFs prontos (ficha catalográfica)
+
+% Estilo institucional do IFPI (capa, folha de rosto, folha de aprovação).
+\usepackage{abntex-ifpi/abntex-ifpi}
+
+% Diagramas UML. Vem desativado porque é um arquivo grande e a maioria dos
+% trabalhos não usa. Se for desenhar diagramas UML, remova o % da linha.
+% \usepackage{abntex-ifpi/tikz-uml}
+
+% Os dados e as cores precisam existir antes da configuração do PDF.
+\input{configuracoes/metadados}
+\input{configuracoes/cores}
+\input{configuracoes/pdf}
+\input{configuracoes/citacoes}
+\input{configuracoes/espacamentos}
+
+% Índice remissivo: ative esta linha somente se também ativar
+% pos-textual/opcionais/indices.tex. Veja docs/guia-iniciante.md.
+% \makeindex

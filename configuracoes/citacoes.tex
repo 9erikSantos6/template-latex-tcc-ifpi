@@ -1,0 +1,43 @@
+% =====================================================================
+% CITAÇÕES E REFERÊNCIAS
+%
+% No texto você usa \cite{chave} ou \citeonline{chave}; as obras ficam
+% cadastradas em bibliografia.bib. Nunca escreva a lista de referências
+% à mão: ela é montada a partir das citações.
+%
+% As opções abaixo são do pacote abntex2cite e definem a aparência:
+%   alf ............ sistema autor-data, "(SILVA, 2020)". A alternativa
+%                    seria o sistema numérico, "[1]".
+%   versalete ...... imprime os sobrenomes em VERSALETE (letras maiúsculas
+%                    de tamanho reduzido), como em Silva.
+%   abnt-emphasize=bf .......... destaca o título em negrito
+%   abnt-etal-list=3 ........... a partir de 3 autores, usa "et al."
+%   abnt-etal-text=it .......... "et al." em itálico
+%   abnt-and-type=& ............ liga os autores com "&"
+%   abnt-last-names=abnt ....... formata os sobrenomes no padrão ABNT
+%   abnt-repeated-author-omit=no  repete o nome do autor a cada entrada,
+%                                 em vez de substituí-lo por um traço
+%
+% Confirme com seu curso qual sistema ele exige antes de mudar.
+% =====================================================================
+\usepackage[
+  alf,
+  versalete,
+  abnt-emphasize=bf,
+  abnt-etal-list=3,
+  abnt-etal-text=it,
+  abnt-and-type=&,
+  abnt-last-names=abnt,
+  abnt-repeated-author-omit=no
+]{abntex2cite}
+
+% Texto do link que leva da referência de volta à página em que foi citada.
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1
+    Nenhuma citação no texto.%
+  \or
+    Citado na página #2.%
+  \else
+    Citado nas páginas #2.%
+  \fi}
