@@ -3,6 +3,12 @@
 
 > Extraído integralmente do PDF oficial (IFPI, 2024, ISBN 978-65-86592-96-2).
 > A numeração das seções abaixo corresponde à do manual original, para conferência.
+>
+> Extração e organização deste guia: Erik Santos
+> ([@9erikSantos6](https://github.com/9erikSantos6), `9xerix6@gmail.com`),
+> discente de Análise e Desenvolvimento de Sistemas, IFPI — Campus Pedro II.
+> Este arquivo é uma leitura do manual para uso neste modelo, não uma publicação
+> do IFPI: em caso de divergência, vale o PDF oficial.
 
 ---
 

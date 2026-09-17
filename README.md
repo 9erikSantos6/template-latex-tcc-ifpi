@@ -183,6 +183,13 @@ modelo de monografia do IFPI e o Manual de Normalização de Trabalhos Acadêmic
 do IFPI de 2022; esta versão atualiza a formatação para a **edição de 2024** do
 mesmo manual.
 
+A atualização da formatação para a edição de 2024 do Manual de Normalização de
+Trabalhos Acadêmicos do IFPI, feita a partir do documento oficial, e a
+documentação de `docs/normas-abnt/` são de Erik Santos
+([@9erikSantos6](https://github.com/9erikSantos6), `9xerix6@gmail.com`),
+discente do curso de Análise e Desenvolvimento de Sistemas, IFPI — Campus
+Pedro II.
+
 **Este projeto não é uma publicação oficial do IFPI e não certifica
 conformidade.** A modalidade implementada é **artigo**, não um modelo completo
 de monografia. Confirme sempre as exigências com o seu curso e com a

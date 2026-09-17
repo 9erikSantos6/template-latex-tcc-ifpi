@@ -7,6 +7,11 @@ está em [`normas-ifpi-2024-formatacao.md`](normas-ifpi-2024-formatacao.md).
 Use esta tabela para conferir uma exigência do seu curso ou para saber onde
 mexer quando precisar adaptar o modelo.
 
+> Mapeamento e aplicação das regras: Erik Santos
+> ([@9erikSantos6](https://github.com/9erikSantos6), `9xerix6@gmail.com`),
+> discente de Análise e Desenvolvimento de Sistemas, IFPI — Campus Pedro II.
+> É uma leitura do manual oficial, sem revisão da biblioteca ou do curso.
+
 ## Apresentação geral
 
 | Seção | Regra | Onde está |
