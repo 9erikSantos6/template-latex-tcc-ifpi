@@ -174,6 +174,21 @@ Recursos que passaram a ter exemplo pronto no modelo: alíneas e subalíneas
 (`alineas`/`subalineas`), citação direta curta, citação indireta, citação de
 citação (`\apud`), quadro e equação numerada.
 
+### Correções de conformidade (estilo v2.1)
+
+Ajustes feitos depois de medir o PDF gerado, página a página, contra o manual:
+
+| Item | Antes | Agora | Regra |
+| --- | --- | --- | --- |
+| Margem inferior | 1,6 cm | 2 cm | manual, seção 3.2 |
+| Recuo da citação longa | 5 cm | 4 cm | manual, seção 10.3 |
+| Folha de abertura dos apêndices e anexos | sem número de página | numerada, como as demais | manual, seção 3.5, alínea d |
+| Natureza do trabalho na folha de aprovação | acompanhava o corpo do texto | espaço simples | manual, seção 3.3, alínea b |
+| Bloco da natureza na folha de rosto | um pouco antes do meio da mancha | a partir do meio da mancha | manual, seção 3.4, alínea b |
+
+O que não dá para corrigir só com o modelo está listado em *Limitações
+conhecidas*, em [`docs/normas-abnt/conformidade.md`](docs/normas-abnt/conformidade.md).
+
 ## Créditos e licença
 
 Modelo derivado do abntex-ifpi, criado por Rafael Madureira Lins de Araújo, com

@@ -22,7 +22,7 @@
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 %%
 %% ---------------------------------------------------------------------
-%% Base normativa desta versao (v2.0):
+%% Base normativa desta versao (v2.1):
 %%   Manual de Normalizacao de Trabalhos Academicos do IFPI, 2024
 %%   (ISBN 978-65-86592-96-2), que consolida:
 %%   NBR 6022 (artigo) . NBR 6023:2018 (referencias)
@@ -31,13 +31,19 @@
 %%   NBR 14724:2011 (trabalhos academicos) . NBR 15287:2011 (projeto)
 %%
 %%   O resumo das regras esta em docs/normas-abnt/.
+%%
+%% v2.1 - conferencia do PDF gerado contra o manual:
+%%   margem inferior de 2 cm (estava 1,6 cm), recuo de 4 cm na citacao longa
+%%   (estava 5 cm), numero de pagina na folha de abertura dos apendices,
+%%   natureza do trabalho em espaco simples tambem na folha de aprovacao e
+%%   bloco da natureza a partir do meio da mancha grafica.
 %% ---------------------------------------------------------------------
 
 % ----------------------------------------------------------
 % Identificação do pacote
 % ----------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[2021/06/01]
-\ProvidesPackage{abntex-ifpi/abntex-ifpi}[2026/09/17 v2.0 Estilo IFPI para abnTeX2 - Manual de Normalizacao do IFPI 2024]
+\ProvidesPackage{abntex-ifpi/abntex-ifpi}[2026/09/23 v2.1 Estilo IFPI para abnTeX2 - Manual de Normalizacao do IFPI 2024]
 
 % Este pacote só funciona com a classe abntex2: ele redefine comandos que
 % pertencem a ela. Se a classe não estiver carregada, avise de forma clara em
@@ -68,14 +74,19 @@
 %
 % O manual exige que TODOS os títulos fiquem em tamanho 12 (= \normalsize
 % neste documento) e que os níveis se distingam entre si por recurso
-% tipográfico hierárquico, da seção primária à quinária. A hierarquia
-% adotada aqui é a do exemplo do manual (seção 7.3.3.5):
+% tipográfico hierárquico (seção 3.7; a norma LIMITA a numeração à seção
+% quinária, não obriga a usá-la). A hierarquia adotada aqui é a do exemplo
+% do manual (seção 7.3.3.5):
 %
-%   1 SEÇÃO PRIMÁRIA        maiúsculas + negrito
-%   1.1 SEÇÃO SECUNDÁRIA    maiúsculas
-%   1.1.1 Seção terciária   negrito
-%   1.1.1.1 Seção quaternária   itálico
-%   1.1.1.1.1 Seção quinária    sem destaque
+%   1 SEÇÃO PRIMÁRIA            \section            maiúsculas + negrito
+%   1.1 SEÇÃO SECUNDÁRIA        \subsection         maiúsculas
+%   1.1.1 Seção terciária       \subsubsection      negrito
+%   1.1.1.1 Seção quaternária   \subsubsubsection   itálico
+%
+% ATENÇÃO: o abnTeX2 oferece QUATRO níveis numerados; não existe comando de
+% seção quinária. Não use \paragraph para tentar criar um quinto nível: ele
+% é o mesmo nível de \subsubsubsection e sai numerado como se fosse outra
+% seção quaternária (1.1.1.2). Precisando de cinco níveis, reorganize o texto.
 %
 % As maiúsculas vêm das opções section=TITLE e subsection=TITLE em main.tex;
 % aqui ficam apenas os destaques (negrito/itálico). Para mudar a aparência
@@ -130,8 +141,6 @@
 \renewcommand{\cftsubsubsectionpagefont}{\normalsize}
 \renewcommand{\cftparagraphfont}{\normalsize\itshape}       % quaternária
 \renewcommand{\cftparagraphpagefont}{\normalsize}
-\renewcommand{\cftsubparagraphfont}{\normalsize}            % quinária
-\renewcommand{\cftsubparagraphpagefont}{\normalsize}
 
 % As páginas de abertura de apêndices e anexos são \part; no sumário elas
 % também precisam ficar em tamanho 12 (seção 3.6).
@@ -177,7 +186,41 @@
 % \headheight de uma linha, o número fica com a base a cerca de 2 cm do topo.
 \setlength{\headheight}{\onelineskip}
 \setheaderspaces{1.6cm}{*}{*}
-\checkandfixthelayout
+
+% As margens são fixadas aqui, junto com o cabeçalho (manual, seção 3.2: 3 cm
+% à esquerda e no topo, 2 cm à direita e embaixo). Ao recalcular a página, o
+% memoir arredonda a altura do texto para um número inteiro de linhas e tira a
+% diferença da margem inferior -- era o que deixava a margem de baixo em
+% 1,6 cm. A variante [fixed] mantém a altura declarada e preserva os 2 cm.
+% No modo twoside, o primeiro valor é a margem interna e o segundo a externa,
+% de modo que o verso espelha as margens, como pede a norma.
+\setulmarginsandblock{3cm}{2cm}{*}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout[fixed]
+
+% A folha de abertura dos apêndices e dos anexos (\partapendices e
+% \partanexos) é impressa com o estilo de página "part", que o abnTeX2 esvazia
+% ao entrar nos elementos pré-textuais e nunca restaura. Sem a linha abaixo,
+% essa folha sai sem número e interrompe a paginação contínua exigida pela
+% seção 3.5, alínea d. O \AtBeginDocument garante que o ajuste seja aplicado
+% depois da configuração dos pré-textuais feita pela classe.
+\AtBeginDocument{\aliaspagestyle{part}{abntifpi}}
+
+% ----------------------------------------------------------
+% CITAÇÃO COM MAIS DE TRÊS LINHAS (manual IFPI 2024, seção 10.3;
+% ABNT NBR 10520:2023)
+%
+% "Recuo de 4 cm da margem esquerda." O ambiente "citacao" do abnTeX2 monta a
+% citação como uma lista e soma o recuo padrão de lista (\leftmargini, cerca
+% de 1 cm) aos 4 cm, o que levava o texto a 5 cm da margem. Descontar
+% \leftmargini do comprimento usado pelo ambiente devolve os 4 cm exatos.
+%
+% Precisa ser \AtBeginDocument porque \leftmargini só tem o valor definitivo
+% depois que o tamanho da fonte do documento está fixado.
+% ----------------------------------------------------------
+\AtBeginDocument{%
+  \setlength{\ABNTEXcitacaorecuo}{\dimexpr4cm-\leftmargini\relax}%
+}
 
 % ----------------------------------------------------------
 % NOTAS DE RODAPÉ (manual IFPI 2024, seção 3.13)
@@ -397,7 +440,7 @@
   \vspace*{\fill}
 
   \abntex@ifnotempty{\imprimirpreambulo}{
-    \hspace{.45\textwidth}
+    \hspace*{.5\textwidth}%
     \begin{minipage}{.5\textwidth}
       \SingleSpacing
       \imprimirpreambulo
@@ -405,7 +448,7 @@
   }
 
   \abntex@ifnotempty{\imprimirorientador}{
-    \hspace{.45\textwidth}
+    \hspace*{.5\textwidth}%
     \begin{minipage}{.5\textwidth}
       \SingleSpacing
       \raggedright
@@ -447,8 +490,11 @@
     {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
     \vspace*{\fill}
 
-    \hspace{.45\textwidth}
+    \hspace*{.5\textwidth}%
     \begin{minipage}{.5\textwidth}
+      % Natureza do trabalho em espaço simples (manual, seção 3.3, alínea b),
+      % mesmo quando o corpo do texto estiver em 1,5 (monografia e tese).
+      \SingleSpacing
       \imprimirpreambulo
     \end{minipage}
     \vspace*{\fill}
@@ -495,8 +541,11 @@ Aprovado em \imprimirdataapresentacao.
     {\ABNTEXchapterfont\MakeUppercase{\imprimirtitulo}}
     \vspace*{\fill}
 
-    \hspace{.45\textwidth}
+    \hspace*{.5\textwidth}%
     \begin{minipage}{.5\textwidth}
+      % Natureza do trabalho em espaço simples (manual, seção 3.3, alínea b),
+      % mesmo quando o corpo do texto estiver em 1,5 (monografia e tese).
+      \SingleSpacing
       \imprimirpreambulo
     \end{minipage}
     \vspace*{\fill}

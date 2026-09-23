@@ -111,6 +111,14 @@ imediatamente de outro título. Cada nível recebe um destaque tipográfico
 diferente, e o modelo já cuida disso: primária em maiúsculas e negrito,
 secundária em maiúsculas, terciária em negrito, quaternária em itálico.
 
+O modelo vai até a **seção quaternária**: são os quatro primeiros comandos da
+tabela acima. A quinária é o limite máximo permitido pela norma, não uma
+exigência, e não existe comando para ela. Não tente criar um quinto nível com
+`\paragraph`:
+ele ocupa o mesmo nível de `\subsubsubsection` e sai numerado como se fosse
+outra seção quaternária (`1.1.1.2`). Precisando de mais níveis, reorganize o
+texto — quatro costumam bastar em um artigo.
+
 Não digite o número dos títulos: ele é automático. Embora os arquivos fiquem
 em `capitulos/`, o modo artigo usa `\section` para os títulos principais;
 `\chapter` fica reservado aos apêndices e anexos. Não mude a modalidade para
