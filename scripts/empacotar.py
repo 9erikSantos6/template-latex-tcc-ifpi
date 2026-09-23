@@ -6,7 +6,8 @@ Execute na pasta que contém main.tex:
 
 O resultado fica em dist/modelo-artigo-ifpi.zip e contém tudo o que um
 colega precisa para compilar: textos, bibliografia, imagens, estilos,
-licença, guias e os arquivos de configuração da raiz. Não entram no
+licença, guias e os arquivos de configuração da raiz, inclusive o
+Dockerfile do ambiente de compilação. Não entram no
 pacote o PDF compilado, os arquivos auxiliares da compilação nem o PDF
 da ficha catalográfica (que costuma trazer dados pessoais).
 """
@@ -23,6 +24,8 @@ ARQUIVOS_DA_RAIZ = [
     Path("bibliografia.bib"),
     Path(".gitignore"),
     Path(".latexmkrc"),
+    Path("Dockerfile"),
+    Path(".dockerignore"),
 ]
 
 # Recursos que o modelo usa na compilação.

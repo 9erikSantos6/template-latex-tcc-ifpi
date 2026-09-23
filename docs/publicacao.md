@@ -20,7 +20,7 @@ Se você só quer escrever seu TCC, leia o `README.md` e o `guia-iniciante.md`.
 
 O arquivo `dist/modelo-artigo-ifpi.zip` reúne os textos, a bibliografia, as
 imagens, os estilos, a licença, os guias e os arquivos de configuração da raiz
-(`.gitignore` e `.latexmkrc`). O script usa apenas a biblioteca padrão do
+(`.gitignore`, `.latexmkrc`, `Dockerfile` e `.dockerignore`). O script usa apenas a biblioteca padrão do
 Python, sem instalar dependências. Uma execução posterior substitui o ZIP.
 
 Ficam **fora** do pacote: o PDF compilado, os arquivos auxiliares da
@@ -38,6 +38,17 @@ Extraia o ZIP em outra pasta e compile a partir dela:
 cd pasta-do-zip
 latexmk
 ```
+
+Sem LaTeX instalado, o mesmo teste sai do ambiente em contêiner (o `Dockerfile`
+também vai no pacote):
+
+```
+cd pasta-do-zip
+docker build -t tcc-tex:full .
+docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd)":/work -w /work tcc-tex:full latexmk
+```
+
+O guia do ambiente é [`compilar-com-docker.md`](compilar-com-docker.md).
 
 Esse teste mostra se a distribuição está completa, sem depender dos arquivos
 auxiliares da sua cópia de trabalho. Faça o mesmo teste importando o ZIP no

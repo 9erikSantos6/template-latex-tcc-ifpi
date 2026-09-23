@@ -1,0 +1,5 @@
+# O Dockerfile deste projeto não copia nenhum arquivo para dentro da imagem:
+# o trabalho é montado na hora de compilar (docker run -v). Ignorar tudo evita
+# enviar o projeto inteiro ao Docker a cada build, que fica quase instantâneo.
+# Se um dia o Dockerfile passar a usar COPY, retire daqui o que precisar entrar.
+*
