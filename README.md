@@ -47,7 +47,8 @@ O modelo funciona nos três ambientes abaixo. Escolha um.
 ### OpenAI Prism (prism.openai.com)
 
 1. Gere ou baixe o ZIP do modelo (`dist/modelo-artigo-ifpi.zip`, criado por
-   `scripts/empacotar.py`; quem recebeu o ZIP já pode usá-lo direto).
+   `scripts/empacotar.py`; quem recebeu o ZIP já pode usá-lo direto). A versão
+   mais recente fica na página **Releases** do repositório no GitHub.
 2. No Prism, crie um projeto e **importe o ZIP**.
 3. Abra `main.tex` na lista de arquivos à esquerda. O Prism compila sozinho e
    mostra o PDF ao lado; não há botão de compilar a cada alteração.
@@ -142,6 +143,11 @@ limpeza dos auxiliares e os erros mais comuns — está em
 - `.gitignore`: lista dos arquivos gerados, que não devem ser versionados.
 - `scripts/empacotar.py`: gera o ZIP de distribuição (veja `docs/publicacao.md`).
 - `_config.yml`: tema usado caso o repositório seja publicado no GitHub Pages.
+- `package.json`, `pnpm-lock.yaml`, `.husky/`, `.github/`, `commitlint.config.mjs`
+  e `release.config.mjs`: ferramentas de quem mantém o modelo (versões e
+  publicação). Não entram no ZIP e não são necessárias para escrever o TCC.
+  Para configurá-las, veja "Prepare o ambiente de manutenção" em
+  `docs/publicacao.md`.
 - `docs/`: os guias que você está lendo.
 
 ## Antes de entregar

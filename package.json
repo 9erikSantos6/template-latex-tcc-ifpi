@@ -1,0 +1,20 @@
+{
+  "name": "template-latex-tcc-ifpi",
+  "private": true,
+  "description": "Ferramentas de manutenção do modelo LaTeX (versionamento e publicação). Não é um pacote npm.",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky",
+    "empacotar": "python3 scripts/empacotar.py",
+    "release": "semantic-release"
+  },
+  "packageManager": "pnpm@12.8.1+sha512.f64ba907507f5ceafe06c8d38e6052d0179444580ec1279ddd5bfc11cb48aa8a2644b66598e07e761da84872a9fc57d5f902b87fa49d024198d558612aabbe45",
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@semantic-release/exec": "^7.1.0",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
+    "husky": "^9.1.7",
+    "semantic-release": "^25.0.9"
+  }
+}

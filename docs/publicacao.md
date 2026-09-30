@@ -59,6 +59,111 @@ Não envie apenas `main.tex`: ele depende das outras pastas. Não remova os PDFs
 de `imagens/` nem `abntex-ifpi/logo_ifpi.pdf` — são recursos do modelo, não
 resultados temporários da compilação.
 
+## Prepare o ambiente de manutenção
+
+Só quem faz commits no modelo precisa disto. Quem escreve o TCC não precisa
+de Node.js, pnpm nem de nada desta seção.
+
+As ferramentas (husky, commitlint e semantic-release) são instaladas pelo
+pnpm a partir do `package.json`. Nada disso é publicado no npm: o
+`package.json` existe apenas para instalar essas ferramentas.
+
+### Pré-requisitos
+
+| Programa | Para quê | Versão |
+| --- | --- | --- |
+| Git | versionar o modelo | qualquer recente |
+| Node.js | rodar as ferramentas | 22.14 ou mais recente (recomendado: 24 LTS, a mesma do CI) |
+| Corepack | baixar a versão certa do pnpm | vem com o Node.js 22 e 24; no Node.js 25 ou mais recente, instale à parte |
+| Python 3 | rodar `scripts/empacotar.py` | 3.8 ou mais recente, sem pacotes extras |
+| LaTeX | compilar o modelo | veja "No seu computador" no `README.md` |
+
+Instale o Node.js pelo site oficial (nodejs.org), pelo gerenciador de pacotes
+do sistema ou por um gerenciador de versões como o nvm. Confira a versão:
+
+```
+node --version
+```
+
+Não instale o pnpm por conta própria: o Corepack baixa automaticamente a
+versão fixada no campo `packageManager` do `package.json`, a mesma que o CI
+usa.
+
+### Instalação (uma vez por máquina e por cópia do repositório)
+
+Na pasta do repositório:
+
+```
+corepack enable
+pnpm install
+```
+
+- No Node.js 25 ou mais recente, o Corepack não vem mais junto. Instale-o
+  antes com `npm install -g corepack`.
+- Se o `corepack enable` falhar por falta de permissão (Node.js instalado no
+  sistema, fora da sua pasta pessoal), rode-o com `sudo` ou use um Node.js
+  instalado pelo nvm.
+- Na primeira vez, o Corepack pode perguntar se deve baixar o pnpm. Responda
+  que sim.
+
+O `pnpm install` também ativa o hook do husky. Para conferir se ele está
+ativo:
+
+```
+git config core.hooksPath
+```
+
+A resposta deve ser `.husky/_`. Se vier vazia, rode `pnpm install` de novo.
+Sem o hook, o commit não é conferido na hora; os PRs continuam sendo conferidos
+no CI.
+
+### Manutenção das dependências
+
+- Depois de um `git pull` que altere o `package.json` ou o `pnpm-lock.yaml`,
+  rode `pnpm install` de novo.
+- Para atualizar as ferramentas, use `pnpm update` e faça o commit do
+  `pnpm-lock.yaml` junto. O CI instala exatamente o que está no lock
+  (`pnpm install --frozen-lockfile`) e falha se ele estiver desatualizado.
+- Não atualize o `conventional-changelog-conventionalcommits` para a versão 10:
+  ela é incompatível com o gerador de notas do semantic-release e quebra a
+  publicação. Mantenha a 9 até o semantic-release suportar a nova versão.
+- Para mudar a versão do pnpm, use `corepack use pnpm@<versão>`, que atualiza o
+  `packageManager` do `package.json`.
+
+## Versões e publicação automática
+
+Cada versão do modelo é uma **Release** no GitHub (tag `vX.Y.Z`) com o ZIP
+anexado como `modelo-artigo-ifpi-vX.Y.Z.zip`. Quem cria a Release é o
+semantic-release, rodando no GitHub Actions (`.github/workflows/release.yml`).
+Nem todo commit gera versão: ela só sai quando o modelo está pronto para uso.
+
+**Quando sai uma versão.** Só quando a `main` recebe commits destes tipos:
+
+| Tipo do commit | Exemplo | Versão |
+| --- | --- | --- |
+| `fix:` ou `perf:` | `fix: corrige a margem da capa` | correção (1.0.0 → 1.0.1) |
+| `feat:` | `feat: adiciona a folha de aprovação` | menor (1.0.1 → 1.1.0) |
+| `feat!:` ou rodapé `BREAKING CHANGE:` | `feat!: renomeia os arquivos de capítulos` | maior (1.1.0 → 2.0.0) |
+
+`docs:`, `chore:`, `refactor:`, `style:`, `test:`, `build:` e `ci:` **não**
+geram versão. Use-os para trabalho em andamento ou que não muda o modelo
+entregue. Trabalho incompleto fica numa branch própria e só chega à `main`
+quando estiver usável.
+
+**O que é verificado antes.** Em todo PR para a `main` e em todo push nela, o
+CI gera o ZIP, extrai numa pasta limpa e compila com pdfLaTeX + BibTeX. Se a
+compilação falhar, não sai versão. O PDF compilado fica disponível por 14 dias
+como artefato da execução (`pdf-de-verificacao`), para você conferir. O CI
+**não** substitui a revisão do PDF nem os testes no Overleaf e no Prism
+descritos acima.
+
+**Mensagens de commit.** O padrão é o *Conventional Commits*
+(`tipo: descrição`). Depois de preparar o ambiente (seção anterior), o husky
+confere cada mensagem na hora do commit e recusa as que estiverem fora do
+padrão (por exemplo `fex: ...`). Nos PRs, o CI confere as mensagens de novo. Se o PR for integrado
+com *squash*, o título do PR vira a mensagem do commit: escreva o título no
+mesmo padrão.
+
 ## Se usar Git
 
 O `.gitignore` do projeto ignora os arquivos gerados pela compilação, o
