@@ -30,3 +30,6 @@
 .vscode/
 .idea/
 .DS_Store
+
+# Dependências das ferramentas de versionamento (pnpm install).
+node_modules/
