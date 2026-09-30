@@ -1,0 +1,87 @@
+# Verifica o modelo em todo PR e publica uma versão quando a main recebe
+# commits feat, fix ou perf. Detalhes em docs/publicacao.md.
+name: Verificar e publicar
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  commits:
+    name: Mensagens de commit
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # Depois do setup-node, para ativar o pnpm do Node 24 (versão do
+      # packageManager em package.json).
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Validar mensagens do PR
+        run: >-
+          pnpm exec commitlint
+          --from ${{ github.event.pull_request.base.sha }}
+          --to ${{ github.event.pull_request.head.sha }}
+          --verbose
+
+  verificar:
+    name: Compilar o ZIP numa pasta limpa
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Empacotar
+        run: python3 scripts/empacotar.py
+      - name: Extrair o ZIP
+        run: unzip -q dist/modelo-artigo-ifpi.zip -d verificacao
+      - name: Compilar com pdfLaTeX + BibTeX
+        uses: xu-cheng/latex-action@4.1.0
+        with:
+          root_file: main.tex
+          working_directory: verificacao
+      - uses: actions/upload-artifact@v7
+        with:
+          name: pdf-de-verificacao
+          path: verificacao/main.pdf
+          retention-days: 14
+
+  publicar:
+    name: Publicar versão
+    needs: verificar
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publicar
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      # Depois do setup-node, para ativar o pnpm do Node 24 (versão do
+      # packageManager em package.json).
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: semantic-release
+        run: pnpm exec semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
