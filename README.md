@@ -78,6 +78,25 @@ Se aparecer `??` no lugar de uma citação ou de um número de figura, deixe o
 ciclo completo terminar. Se persistir, veja a tabela de problemas no
 `docs/guia-iniciante.md`.
 
+#### Com Docker, sem instalar o LaTeX
+
+Se você prefere não instalar o TeX Live na sua máquina, o projeto traz um
+`Dockerfile` com o ambiente pronto. Na pasta que contém o `main.tex`:
+
+```
+docker build -t tcc-tex:full .
+docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd)":/work -w /work tcc-tex:full latexmk
+```
+
+O primeiro comando constrói a imagem e é executado **uma vez só**; o segundo
+compila e gera o `main.pdf` na sua pasta, como se fosse local. No Windows
+(PowerShell), troque o trecho do caminho por `-v "${PWD}:/work"` e dispense o
+`-u`.
+
+O passo a passo completo — instalação do Docker, compilação em etapas,
+limpeza dos auxiliares e os erros mais comuns — está em
+[`docs/compilar-com-docker.md`](docs/compilar-com-docker.md).
+
 ## Onde editar cada coisa
 
 | Quero alterar… | Arquivo ou pasta |
